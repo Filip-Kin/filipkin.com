@@ -123,6 +123,11 @@ footer li.divider {
     top: 0;
 }
 
+nav img {
+    width: 100%;
+    height: auto;
+}
+
 .nav ul {
     list-style: none;
     margin: 0;
