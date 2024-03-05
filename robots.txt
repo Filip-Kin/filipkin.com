@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /yt/watch.php
+
+Sitemap: https://filipkin.com/sitemap.xml
+
