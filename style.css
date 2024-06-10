@@ -12,7 +12,8 @@ html {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     color: #ffffff;
     font-family: Oswald, Arial;
     font-weight: 400;
@@ -26,7 +27,15 @@ h1 {
 
 h1+h2 {
     margin-top: 5px;
-    font-size: 2.5em;
+    font-size: 2.0em;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-size: 1.25rem;
 }
 
 p,
@@ -34,6 +43,8 @@ li,
 footer {
     color: #ffffff;
     font-family: Roboto, Helvetica, "Noto Sans", Arial;
+    line-height: 120%;
+    font-size: 1.1rem;
 }
 
 footer {
@@ -166,7 +177,7 @@ ul li {
 }
 
 #mobile-dropdown {
-    font-size: 48px;
+    font-size: 1.5rem;
     color: white;
     position: absolute;
     right: calc((64px - 48px)/2 + 5px);
@@ -225,6 +236,7 @@ ul li {
 
 .container {
     left: calc(12vw + (18vw / 2));
+    max-width: 1024px;
 }
 
 @media screen and (min-width: 1250px) {
@@ -233,13 +245,13 @@ ul li {
     }
 
     .nav ul a {
-        font-size: 16px;
+        font-size: 1.0rem;
     }
 }
 
 @media screen and (min-width: 800px) and (max-width: 1250px) {
     .nav ul a {
-        font-size: 1.3vw;
+        font-size: 0.8rem;
     }
 }
 
