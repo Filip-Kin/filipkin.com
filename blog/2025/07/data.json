@@ -1,0 +1,76 @@
+{
+    "month": 7,
+    "year": 2025,
+    "activities": [
+        {
+            "label": "Sleep",
+            "hours": 286
+        },
+        {
+            "label": "Dating",
+            "hours": 0
+        },
+        {
+            "label": "Friends",
+            "hours": 48
+        },
+        {
+            "label": "Robots",
+            "hours": 35
+        },
+        {
+            "label": "School",
+            "hours": 0
+        },
+        {
+            "label": "Work",
+            "hours": 46
+        },
+        {
+            "label": "Productive",
+            "hours": 66
+        },
+        {
+            "label": "Hobby",
+            "hours": 9
+        },
+        {
+            "label": "Leisure",
+            "hours": 142
+        },
+        {
+            "label": "Waste",
+            "hours": 7
+        },
+        {
+            "label": "Transition",
+            "hours": 86
+        }
+    ],
+    "mood": [
+        {
+            "label": "Bad",
+            "hours": 0
+        },
+        {
+            "label": "Poor",
+            "hours": 11
+        },
+        {
+            "label": "Ok",
+            "hours": 35
+        },
+        {
+            "label": "Neutral",
+            "hours": 248
+        },
+        {
+            "label": "Good",
+            "hours": 113
+        },
+        {
+            "label": "Great",
+            "hours": 32
+        }
+    ]
+}

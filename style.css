@@ -44,6 +44,8 @@ h4 {
 
 p,
 li,
+td,
+th,
 footer {
     color: #ffffff;
     font-family: Roboto, Helvetica, "Noto Sans", Arial;
@@ -74,7 +76,7 @@ section ul>li {
     vertical-align: middle;
 }
 
-.nice {
+.nice, .post {
     background: #282c34;
     border-radius: 7px;
     display: block;
@@ -83,7 +85,7 @@ section ul>li {
     padding: 0.5em;
 }
 
-.nice img {
+.nice img, .post img {
     max-height: 300px;
     margin: -0.5em -0.5em 0.5em -0.5em;
     width: calc(100% + 1em);
