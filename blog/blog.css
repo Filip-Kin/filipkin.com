@@ -1,0 +1,75 @@
+#posts table td, #posts table th {
+    font-size: 0.8rem;
+    border: 0;
+    border-spacing: 0;
+}
+.post-content {
+    margin-bottom: 20px;
+}
+
+/* Progress bar container */
+.progress-bar {
+    display: flex;
+    height: 24px;
+    border-radius: 4px;
+    overflow: visible;
+    margin: 0.5rem 1rem;
+    position: relative;
+}
+
+/* Each segment */
+.progress-bar .segment {
+    cursor: pointer;
+    position: relative;
+    /* flex basis comes from inline style */
+}
+
+.progress-bar .segment:first-child {
+    border-top-left-radius: 0.6rem;
+    border-bottom-left-radius: 0.6rem;
+}
+
+.progress-bar .segment:last-child {
+    border-top-right-radius: 0.6rem;
+    border-bottom-right-radius: 0.6rem;
+}
+
+/* Hover tooltip */
+.progress-bar .segment:hover::after {
+    content: attr(data-activity) "\A" attr(data-hours) " hrs";
+    white-space: pre;
+    display: inline-block;
+    line-height: 1.2;
+    position: absolute;
+    top: -3em;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: 10;
+    text-align: center;
+    font-family: Roboto, Helvetica, "Noto Sans", Arial;
+}
+
+
+.sleep        { background-color: #323842; }
+.dating       { background-color: #c61734; }
+.friends      { background-color: #015745; }
+.robots       { background-color: #fe65af; }
+.school       { background-color: #01a8b3; }
+.work         { background-color: #199748; }
+.productive   { background-color: #fef236; }
+.hobby        { background-color: #ff6c00; }
+.leisure      { background-color: #5b3bb0; }
+.waste        { background-color: #ff2816; }
+.transition   { background-color: #bffe54; }
+
+.bad      { background-color: #5b3bb0; }
+.poor     { background-color: #c61734; }
+.ok       { background-color: #ff6c00; }
+.neutral  { background-color: #fabc05; }
+.good     { background-color: #01a8b3; }
+.great    { background-color: #199748; }
