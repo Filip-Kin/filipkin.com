@@ -1,8 +1,14 @@
-#posts table td, #posts table th {
-    font-size: 0.8rem;
-    border: 0;
-    border-spacing: 0;
+/* Target only elements *inside* the body */
+body [lang] {
+  display: none;
 }
+
+/* Then show only the matching ones */
+html.lang-active-en body [lang="en"],
+html.lang-active-pl body [lang="pl"] {
+  display: block; /* or inline/block as appropriate */
+}
+
 .post-content {
     margin-bottom: 20px;
 }
@@ -73,3 +79,75 @@
 .neutral  { background-color: #fabc05; }
 .good     { background-color: #01a8b3; }
 .great    { background-color: #199748; }
+
+/* container for the two buttons */
+.lang-switch {
+  display: inline-flex;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.lang-switch {
+  display: inline-flex;
+  gap: 0.25em;
+  margin-bottom: 1em;
+}
+
+.lang-switch button {
+  background: #282c34;
+  color: #ccc;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  padding: 0.25em 0.75em;
+  margin: 0 0.15em;
+  font-family: Oswald, Arial, sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 
+    background 0.2s, 
+    border-color 0.2s, 
+    color 0.2s;
+}
+
+.lang-switch button:hover {
+  background: #4a4f5b;
+}
+
+.lang-switch button.active {
+  background: transparent;
+  color: #00ccff;
+  border-color: #00ccff;         /* just an outline highlight */
+}
+
+.lang-switch button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 204, 255, 0.5);
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.image-grid .item {
+  /* each portrait item wants at least 200px, but will grow to fill the row */
+  flex: 1 1 200px;
+}
+
+.image-grid .item.landscape {
+  /* force a full‐width break */
+  flex: 1 1 100%;
+}
+
+.image-grid img {
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  max-height: 50vh;
+  width: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+}
