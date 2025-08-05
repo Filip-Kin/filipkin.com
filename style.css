@@ -85,7 +85,7 @@ section ul>li {
     padding: 0.5em;
 }
 
-.nice img, .post img {
+.nice img {
     max-height: 300px;
     margin: -0.5em -0.5em 0.5em -0.5em;
     width: calc(100% + 1em);
