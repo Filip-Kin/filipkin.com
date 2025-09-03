@@ -92,6 +92,31 @@ async function loadNext() {
 	} while (!(await loadArchive(state.year, state.month)));
 }
 
+// is the page tall enough to scroll?
+function isScrollable(threshold = 50) {
+	const doc = document.documentElement;
+	return doc.scrollHeight - window.innerHeight > threshold;
+}
+
+// wait one paint so layout/height is correct
+function nextFrame() {
+	return new Promise((r) => requestAnimationFrame(() => r()));
+}
+
+// keep loading older months until page can scroll (or we hit a limit)
+async function ensureScrollable({ maxExtraMonths = 5 } = {}) {
+	let loaded = 0;
+
+	// let images/styles apply before measuring
+	await nextFrame();
+
+	while (!isScrollable() && state.year >= 2020 && loaded < maxExtraMonths) {
+		await loadNext(); // loads one more older month
+		await nextFrame(); // let layout update before re-checking
+		loaded++;
+	}
+}
+
 /**
  * Initializes the archive loading: loads current month or falls back to older.
  */
@@ -100,7 +125,13 @@ async function initArchive() {
 	if (!state.container) return;
 
 	const ok = await loadArchive(state.year, state.month);
-	if (!ok) await loadNext();
+	if (!ok) {
+		// if current month missing, step back until something loads
+		await loadNext();
+	}
+
+	// After we have at least one month, make sure the page can scroll
+	await ensureScrollable({ maxExtraMonths: 4 }); // tweak limit as you like
 }
 
 /**
