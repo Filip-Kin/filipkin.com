@@ -1,22 +1,22 @@
 {
-    "month": 7,
+    "month": 6,
     "year": 2025,
     "activities": [
         {
             "label": "Sleep",
-            "hours": 298
+            "hours": 263
         },
         {
             "label": "Dating",
-            "hours": 0
+            "hours": 19
         },
         {
             "label": "Friends",
-            "hours": 48
+            "hours": 87
         },
         {
             "label": "Robots",
-            "hours": 38
+            "hours": 0
         },
         {
             "label": "School",
@@ -24,27 +24,27 @@
         },
         {
             "label": "Work",
-            "hours": 46
+            "hours": 42
         },
         {
             "label": "Productive",
-            "hours": 67
+            "hours": 72
         },
         {
             "label": "Hobby",
-            "hours": 11
+            "hours": 31
         },
         {
             "label": "Leisure",
-            "hours": 149
+            "hours": 148
         },
         {
             "label": "Waste",
-            "hours": 7
+            "hours": 0
         },
         {
             "label": "Transition",
-            "hours": 86
+            "hours": 63
         }
     ],
     "mood": [
@@ -54,23 +54,23 @@
         },
         {
             "label": "Poor",
-            "hours": 11
+            "hours": 2
         },
         {
             "label": "Ok",
-            "hours": 35
+            "hours": 51
         },
         {
             "label": "Neutral",
-            "hours": 257
+            "hours": 255
         },
         {
             "label": "Good",
-            "hours": 117
+            "hours": 112
         },
         {
             "label": "Great",
-            "hours": 32
+            "hours": 42
         }
     ]
 }
