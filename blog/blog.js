@@ -53,7 +53,7 @@ async function loadArchive(year, month) {
 	const htmlPath = `${base}/index.html`;
 
 	try {
-		const htmlRes = await fetch(htmlPath);
+		const htmlRes = await fetch(htmlPath, { cache: "no-store" });
 		if (!htmlRes.ok) return false;
 
 		const htmlText = await htmlRes.text();
@@ -189,7 +189,7 @@ function insertLocalizedHeadings(postEl, year, month) {
  */
 async function loadDataAndInjectBars(base, postEl) {
 	try {
-		const res = await fetch(`${base}/data.json`);
+		const res = await fetch(`${base}/data.json`, { cache: "no-store" });
 		if (!res.ok) return;
 
 		const data = await res.json();
