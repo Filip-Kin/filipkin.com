@@ -303,11 +303,25 @@ function tagImageOrientation(grid) {
 	});
 }
 
+function initSubscribeForm() {
+	const msg = document.getElementById("subscribe-message");
+	if (!msg) return;
+
+	if (window.location.hash === "#subscribed") {
+		msg.textContent = "✅ Thanks for subscribing!";
+		msg.style.color = "lightgreen";
+	} else if (window.location.hash === "#error") {
+		msg.textContent = "❌ Something went wrong. Please try again.";
+		msg.style.color = "salmon";
+	}
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Initialize on DOM Ready
 // ─────────────────────────────────────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
+	initSubscribeForm();
 	setupLangSwitcher();
 	bindScrollListener();
 	initArchive();
