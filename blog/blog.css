@@ -192,17 +192,17 @@ html.lang-active-pl body [lang="pl"] {
 /* Dynamic sizing based on number of images - applies to both .item img and direct > img */
 .image-grid[data-count="1"] img,
 .image-grid[data-count="2"] img {
-  max-height: 55vh; /* Reduced from 60vh for better constraint */
+  max-height: 65vh; /* Increased for better visibility */
 }
 
 .image-grid[data-count="3"] img,
 .image-grid[data-count="4"] img {
-  max-height: 40vh; /* Reduced from 45vh for better constraint */
+  max-height: 50vh; /* Increased for better visibility */
 }
 
 .image-grid[data-count="5"] img,
 .image-grid[data-count="6"] img {
-  max-height: 32vh;
+  max-height: 35vh;
 }
 
 .image-grid img {
@@ -213,25 +213,49 @@ html.lang-active-pl body [lang="pl"] {
 .image-grid[data-count="7"] .item,
 .image-grid[data-count="8"] .item,
 .image-grid[data-count="9"] .item {
-  flex: 1 1 calc(33.333% - 4px); /* Force 3-column layout for large grids */
-  max-width: calc(33.333% - 4px);
+  flex: 1 1 calc(33.333% - 3px); /* Force 3-column layout for large grids */
+  max-width: calc(33.333% - 3px);
+  min-width: calc(33.333% - 3px); /* Prevent shrinking below this size */
 }
 
+/* Optimize large grids (7+ images) to minimize gaps */
 .image-grid[data-count="7"] .item.landscape,
-.image-grid[data-count="8"] .item.landscape,
-.image-grid[data-count="9"] .item.landscape {
-  flex: 1 1 calc(50% - 4px); /* Landscape images can span 2 columns worth */
-  max-width: calc(50% - 4px);
+.image-grid[data-count="8"] .item.landscape {
+  flex: 0 0 calc((100% - 5px) / 2) !important; /* Landscape images can span 2 columns worth */
+  max-width: calc((100% - 5px) / 2) !important;
+  min-width: calc((100% - 5px) / 2) !important;
+}
+
+/* Special handling for 9-image grids to ensure consistent 3x3 layout */
+.image-grid[data-count="9"] {
+  gap: 1px !important; /* Minimal gap for 9-image grids */
+  justify-content: stretch; /* Fill all available space */
+}
+
+.image-grid[data-count="9"] .item {
+  flex: 0 0 calc((100% - 8px) / 3) !important; /* Exact calculation: (100% - 8 gaps) / 3 items */
+  max-width: calc((100% - 8px) / 3) !important;
+  min-width: calc((100% - 8px) / 3) !important;
+  width: calc((100% - 8px) / 3) !important;
+}
+
+/* Also apply to other large grids */
+.image-grid[data-count="7"] .item,
+.image-grid[data-count="8"] .item {
+  flex: 0 0 calc((100% - 10px) / 3) !important; /* Account for gaps between 3 columns */
+  max-width: calc((100% - 10px) / 3) !important;
+  min-width: calc((100% - 10px) / 3) !important;
 }
 
 /* Additional constraint for rows with mixed aspect ratios */
-.image-grid.mixed-row .item {
-  align-items: stretch;
+.image-grid.mixed-row {
+  gap: 4px; /* Consistent gap */
+  flex-wrap: wrap; /* Allow wrapping for 4+ images */
 }
 
 .image-grid.mixed-row img {
-  height: 100%;
-  object-fit: cover;
+  /* Dimensions will be set dynamically by JavaScript for precise fitting */
+  object-fit: cover; /* Use cover for mixed-row to fill containers completely */
   object-position: center;
 }
 

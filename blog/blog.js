@@ -259,7 +259,7 @@ function sortExistingImagesByAspectRatio(grid, images) {
 			const item = img.parentElement;
 			const aspectRatio = img.naturalWidth && img.naturalHeight ? 
 				img.naturalWidth / img.naturalHeight : 1;
-			const isLandscape = aspectRatio > 1.3; // More strict landscape definition
+			const isLandscape = aspectRatio > 1.1; // Even more inclusive landscape definition
 			
 			return {
 				element: item,
@@ -304,66 +304,125 @@ function sortExistingImagesByAspectRatio(grid, images) {
 }
 
 /**
- * Implements height matching for images in the same row with different aspect ratios
+ * Implements proportional width allocation and height matching for mixed aspect ratio grids
  * @param {HTMLElement} grid - The image grid container
  * @param {Array} imageData - Array of image data objects
  */
 function implementHeightMatching(grid, imageData) {
-	// Group images into rows based on their flex wrapping behavior
-	let currentRowY = null;
-	let currentRow = [];
-	const rows = [];
+	// Check if we should apply special layout
+	const aspectRatios = imageData.map(data => data.aspectRatio);
+	const minRatio = Math.min(...aspectRatios);
+	const maxRatio = Math.max(...aspectRatios);
+	const hasVariedAspectRatios = (maxRatio / minRatio) > 1.3; // Any significant variation in aspect ratios
 	
-	imageData.forEach(data => {
-		const rect = data.element.getBoundingClientRect();
+	// Apply special layout for grids with varied aspect ratios
+	if (hasVariedAspectRatios && imageData.length <= 6) {
+		grid.classList.add('mixed-row');
 		
-		if (currentRowY === null || Math.abs(rect.top - currentRowY) > 10) {
-			// New row detected
-			if (currentRow.length > 0) {
-				rows.push([...currentRow]);
+		// Force row wrapping for 4+ images to prevent overcrowding
+		if (imageData.length >= 4) {
+			// Strategy: Put the most extreme aspect ratio image in its own row,
+			// then group the rest
+			const sortedByRatio = [...imageData].sort((a, b) => b.aspectRatio - a.aspectRatio);
+			const mostExtreme = sortedByRatio[0];
+			const remaining = imageData.filter(data => data !== mostExtreme);
+			
+			// Calculate dimensions for the extreme image (full width row)
+			const gridWidth = grid.offsetWidth;
+			const extremeHeight = gridWidth / mostExtreme.aspectRatio;
+			const maxExtremeHeight = window.innerHeight * 0.35;
+			const finalExtremeHeight = Math.min(extremeHeight, maxExtremeHeight);
+			const finalExtremeWidth = finalExtremeHeight * mostExtreme.aspectRatio;
+			
+			// Apply layout for the extreme image (full width)
+			mostExtreme.element.style.flex = '1 1 100%';
+			mostExtreme.element.style.height = `${finalExtremeHeight}px`;
+			mostExtreme.element.style.width = '100%';
+			mostExtreme.element.style.display = 'flex';
+			mostExtreme.element.style.justifyContent = 'center';
+			mostExtreme.element.style.alignItems = 'center';
+			mostExtreme.img.style.height = `${finalExtremeHeight}px`;
+			mostExtreme.img.style.width = `${finalExtremeWidth}px`;
+			mostExtreme.img.style.objectFit = 'cover';
+			mostExtreme.img.style.objectPosition = 'center';
+			
+			// Calculate dimensions for remaining images (shared row)
+			if (remaining.length > 0) {
+				const totalRemainingRatio = remaining.reduce((sum, data) => sum + data.aspectRatio, 0);
+				const gap = 4;
+				const totalGapWidth = gap * (remaining.length - 1);
+				const availableWidth = gridWidth - totalGapWidth;
+				
+				// Calculate height that makes all remaining images fit exactly in available width
+				const sharedRowHeight = availableWidth / totalRemainingRatio;
+				const maxSharedRowHeight = window.innerHeight * 0.25;
+				const finalSharedRowHeight = Math.min(sharedRowHeight, maxSharedRowHeight);
+				
+				remaining.forEach(data => {
+					// Calculate exact width for this aspect ratio at the shared height
+					const exactWidth = data.aspectRatio * finalSharedRowHeight;
+					const widthPercentage = (exactWidth / gridWidth) * 100;
+					
+					data.element.style.flex = `0 0 ${widthPercentage}%`;
+					data.element.style.height = `${finalSharedRowHeight}px`;
+					data.element.style.width = `${widthPercentage}%`;
+					data.element.style.display = 'flex';
+					data.element.style.justifyContent = 'center';
+					data.element.style.alignItems = 'center';
+					data.img.style.height = `${finalSharedRowHeight}px`;
+					data.img.style.width = `${exactWidth}px`;
+					data.img.style.objectFit = 'cover';
+					data.img.style.objectPosition = 'center';
+				});
 			}
-			currentRow = [data];
-			currentRowY = rect.top;
 		} else {
-			// Same row
-			currentRow.push(data);
-		}
-	});
-	
-	// Add the last row
-	if (currentRow.length > 0) {
-		rows.push(currentRow);
-	}
-	
-	// Apply height matching to rows with mixed aspect ratios
-	rows.forEach(row => {
-		if (row.length <= 1) return;
-		
-		// Check if row has mixed aspect ratios
-		const hasLandscape = row.some(data => data.isLandscape);
-		const hasPortrait = row.some(data => !data.isLandscape);
-		
-		if (hasLandscape && hasPortrait) {
-			// Mixed aspect ratio row - apply height matching
-			grid.classList.add('mixed-row');
+			// For 2-3 images, use proportional allocation in a single row
+			const totalAspectRatio = imageData.reduce((sum, data) => sum + data.aspectRatio, 0);
+			const gridWidth = grid.offsetWidth;
+			const gap = 4;
+			const totalGapWidth = gap * (imageData.length - 1);
+			const availableWidth = gridWidth - totalGapWidth;
 			
-			// Calculate target height based on the smallest image's natural height
-			// scaled to fit within the container width
-			const targetHeight = Math.min(...row.map(data => {
-				const containerWidth = data.element.offsetWidth;
-				const naturalRatio = data.aspectRatio;
-				return containerWidth / naturalRatio;
-			}));
+			// Calculate height that makes all images fit exactly in available width
+			const targetHeight = availableWidth / totalAspectRatio;
+			const maxHeight = window.innerHeight * (imageData.length <= 2 ? 0.65 : 0.5);
+			const finalHeight = Math.min(targetHeight, maxHeight);
 			
-			// Apply consistent height to all items in this row
-			row.forEach(data => {
-				data.element.style.height = `${Math.min(targetHeight, window.innerHeight * 0.25)}px`;
-				data.img.style.height = '100%';
+			imageData.forEach(data => {
+				// Calculate exact width for this aspect ratio at the target height
+				const exactWidth = data.aspectRatio * finalHeight;
+				const widthPercentage = (exactWidth / gridWidth) * 100;
+				
+				data.element.style.flex = `0 0 ${widthPercentage}%`;
+				data.element.style.height = `${finalHeight}px`;
+				data.element.style.width = `${widthPercentage}%`;
+				data.element.style.display = 'flex';
+				data.element.style.justifyContent = 'center';
+				data.element.style.alignItems = 'center';
+				data.img.style.height = `${finalHeight}px`;
+				data.img.style.width = `${exactWidth}px`;
 				data.img.style.objectFit = 'cover';
 				data.img.style.objectPosition = 'center';
 			});
 		}
-	});
+	} else {
+		// For uniform aspect ratios or larger grids, use standard layout with proper sizing
+		imageData.forEach(data => {
+			// Reset any previous custom styling
+			data.element.style.flex = '';
+			data.element.style.height = '';
+			data.element.style.width = '';
+			data.element.style.display = '';
+			data.element.style.justifyContent = '';
+			data.element.style.alignItems = '';
+			
+			// Ensure images fill their containers
+			data.img.style.height = '100%';
+			data.img.style.width = '100%';
+			data.img.style.objectFit = 'cover';
+			data.img.style.objectPosition = 'center';
+		});
+	}
 }
 
 /**
@@ -382,7 +441,7 @@ function processImageGrids(postEl, images, base) {
 	const imagesWithAspectRatio = images.map((img, originalIndex) => ({
 		...img,
 		aspectRatio: img.width / img.height,
-		isLandscape: (img.width / img.height) > 1.3, // More strict landscape definition
+		isLandscape: (img.width / img.height) > 1.1, // More inclusive landscape definition
 		originalIndex
 	}));
 	
