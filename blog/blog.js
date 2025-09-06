@@ -293,11 +293,6 @@ function sortExistingImagesByAspectRatio(grid, images) {
 			}
 		});
 		
-		// Reorder the DOM elements
-		imageData.forEach(data => {
-			grid.appendChild(data.element);
-		});
-		
 		// Implement height matching for mixed aspect ratio rows
 		implementHeightMatching(grid, imageData);
 	});
@@ -334,10 +329,11 @@ function implementHeightMatching(grid, imageData) {
 			const finalExtremeHeight = Math.min(extremeHeight, maxExtremeHeight);
 			const finalExtremeWidth = finalExtremeHeight * mostExtreme.aspectRatio;
 			
-			// Apply layout for the extreme image (full width)
-			mostExtreme.element.style.flex = '1 1 100%';
+			// Apply layout for the extreme image (centered, not full width)
+			const extremeWidthPercentage = (finalExtremeWidth / gridWidth) * 100;
+			mostExtreme.element.style.flex = `0 0 ${extremeWidthPercentage}%`;
 			mostExtreme.element.style.height = `${finalExtremeHeight}px`;
-			mostExtreme.element.style.width = '100%';
+			mostExtreme.element.style.width = `${extremeWidthPercentage}%`;
 			mostExtreme.element.style.display = 'flex';
 			mostExtreme.element.style.justifyContent = 'center';
 			mostExtreme.element.style.alignItems = 'center';
@@ -374,6 +370,12 @@ function implementHeightMatching(grid, imageData) {
 					data.img.style.objectFit = 'cover';
 					data.img.style.objectPosition = 'center';
 				});
+				
+				// Reorder DOM: full-width image first, then remaining images
+				grid.appendChild(mostExtreme.element);
+				remaining.forEach(data => {
+					grid.appendChild(data.element);
+				});
 			}
 		} else {
 			// For 2-3 images, use proportional allocation in a single row
@@ -404,6 +406,11 @@ function implementHeightMatching(grid, imageData) {
 				data.img.style.objectFit = 'cover';
 				data.img.style.objectPosition = 'center';
 			});
+			
+			// Reorder DOM elements for 2-3 image layouts
+			imageData.forEach(data => {
+				grid.appendChild(data.element);
+			});
 		}
 	} else {
 		// For uniform aspect ratios or larger grids, use standard layout with proper sizing
@@ -421,6 +428,11 @@ function implementHeightMatching(grid, imageData) {
 			data.img.style.width = '100%';
 			data.img.style.objectFit = 'cover';
 			data.img.style.objectPosition = 'center';
+		});
+		
+		// Reorder DOM elements for non-mixed-row layouts
+		imageData.forEach(data => {
+			grid.appendChild(data.element);
 		});
 	}
 }

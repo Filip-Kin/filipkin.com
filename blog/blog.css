@@ -154,7 +154,7 @@ html.lang-active-pl body [lang="pl"] {
 .image-grid .item.landscape {
   /* landscape images can be more flexible width */
   flex: 1 1 250px;
-  max-width: 400px; /* Prevent landscape images from becoming too wide */
+  /* Removed max-width constraint to allow proportional layouts */
 }
 
 /* Handle direct img children for backward compatibility */
@@ -177,7 +177,7 @@ html.lang-active-pl body [lang="pl"] {
 
 .image-grid > img.landscape {
   flex: 1 1 250px;
-  max-width: 400px;
+  /* Removed max-width constraint to allow proportional layouts */
 }
 
 .image-grid img {
