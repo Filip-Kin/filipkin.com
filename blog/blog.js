@@ -12,6 +12,7 @@ const state = {
 	month: new Date().getMonth() + 1, // 1–12
 	fetched: new Set(),
 	container: null,
+	isLoading: false, // Prevent concurrent loading
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -89,10 +90,19 @@ async function loadArchive(year, month) {
  * Stops once a valid post is loaded or year < 2020.
  */
 async function loadNext() {
-	do {
-		decrementMonth();
-		if (state.year < 2020) return;
-	} while (!(await loadArchive(state.year, state.month)));
+	// Prevent concurrent loading to maintain chronological order
+	if (state.isLoading) return;
+
+	state.isLoading = true;
+
+	try {
+		do {
+			decrementMonth();
+			if (state.year < 2025) return;
+		} while (!(await loadArchive(state.year, state.month)));
+	} finally {
+		state.isLoading = false;
+	}
 }
 
 // is the page tall enough to scroll?
@@ -726,7 +736,8 @@ window.nextImage = nextImage;
  * Scroll event handler that triggers loading the next archive when near bottom.
  */
 function onScroll() {
-	if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+	// Only trigger loading if not already loading and near bottom
+	if (!state.isLoading && window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
 		loadNext();
 	}
 }
