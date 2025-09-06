@@ -72,5 +72,235 @@
             "label": "Great",
             "hours": 42
         }
+    ],
+    "images": [
+        {
+            "name": "image15.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image15.webp",
+            "width": 1200,
+            "height": 1124
+        },
+        {
+            "name": "image35.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image35.webp",
+            "width": 1200,
+            "height": 1108
+        },
+        {
+            "name": "image12.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image12.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image8.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image8.webp",
+            "width": 1200,
+            "height": 900
+        },
+        {
+            "name": "image33.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image33.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image4.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image4.webp",
+            "width": 710,
+            "height": 765
+        },
+        {
+            "name": "image36.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image36.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image38.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image38.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image23.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image23.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image31.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image31.webp",
+            "width": 1200,
+            "height": 1003
+        },
+        {
+            "name": "image11.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image11.webp",
+            "width": 716,
+            "height": 1060
+        },
+        {
+            "name": "image13.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image13.webp",
+            "width": 1200,
+            "height": 674
+        },
+        {
+            "name": "image21.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image21.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image24.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image24.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image16.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image16.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image2.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image2.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image26.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image26.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image30.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image30.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image3.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image3.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image1.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image1.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image7.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image7.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image28.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image28.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image27.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image27.webp",
+            "width": 957,
+            "height": 1200
+        },
+        {
+            "name": "image32.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image32.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image22.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image22.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image10.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image10.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image14.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image14.webp",
+            "width": 900,
+            "height": 1200
+        },
+        {
+            "name": "image25.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image25.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image34.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image34.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image17.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image17.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image29.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image29.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image6.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image6.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image18.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image18.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image20.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image20.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image9.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image9.webp",
+            "width": 903,
+            "height": 1200
+        },
+        {
+            "name": "image19.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image19.webp",
+            "width": 1200,
+            "height": 903
+        },
+        {
+            "name": "image37.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image37.webp",
+            "width": 675,
+            "height": 1200
+        },
+        {
+            "name": "image5.webp",
+            "url": "https://storage.googleapis.com/filipkin-blog-images/06/image5.webp",
+            "width": 675,
+            "height": 1200
+        }
     ]
 }
