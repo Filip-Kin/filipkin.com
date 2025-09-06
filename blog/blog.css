@@ -127,29 +127,201 @@ html.lang-active-pl body [lang="pl"] {
 .image-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 4px; /* Further reduced gap for minimal spacing */
     max-width: 800px;
     margin: 0 auto;
+    max-height: 100vh;
+    overflow: hidden; /* Ensure strict height constraint */
+    align-items: flex-start;
+    justify-content: center; /* Center images for better alignment */
 }
 
 .image-grid .item {
   /* each portrait item wants at least 200px, but will grow to fill the row */
   flex: 1 1 200px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  display: flex;
+  align-items: stretch; /* Ensure items stretch to match row height */
+  min-width: 0; /* Prevent flex items from overflowing */
+}
+
+.image-grid .item:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
 }
 
 .image-grid .item.landscape {
-  /* force a full‐width break */
-  flex: 1 1 100%;
+  /* landscape images can be more flexible width */
+  flex: 1 1 250px;
+  max-width: 400px; /* Prevent landscape images from becoming too wide */
+}
+
+/* Handle direct img children for backward compatibility */
+.image-grid > img {
+  flex: 1 1 200px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  object-fit: contain;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.image-grid > img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+.image-grid > img.landscape {
+  flex: 1 1 250px;
+  max-width: 400px;
 }
 
 .image-grid img {
   height: auto;
   display: block;
   border-radius: 4px;
-  max-height: 50vh;
   width: 100%;
   object-fit: contain;
   margin: 0 auto;
+}
+
+/* Dynamic sizing based on number of images - applies to both .item img and direct > img */
+.image-grid[data-count="1"] img,
+.image-grid[data-count="2"] img {
+  max-height: 55vh; /* Reduced from 60vh for better constraint */
+}
+
+.image-grid[data-count="3"] img,
+.image-grid[data-count="4"] img {
+  max-height: 40vh; /* Reduced from 45vh for better constraint */
+}
+
+.image-grid[data-count="5"] img,
+.image-grid[data-count="6"] img {
+  max-height: 32vh;
+}
+
+.image-grid img {
+  max-height: 25vh; /* Reduced from 30vh for stricter constraint */
+}
+
+/* Optimize large grids (7+ images) to minimize gaps */
+.image-grid[data-count="7"] .item,
+.image-grid[data-count="8"] .item,
+.image-grid[data-count="9"] .item {
+  flex: 1 1 calc(33.333% - 4px); /* Force 3-column layout for large grids */
+  max-width: calc(33.333% - 4px);
+}
+
+.image-grid[data-count="7"] .item.landscape,
+.image-grid[data-count="8"] .item.landscape,
+.image-grid[data-count="9"] .item.landscape {
+  flex: 1 1 calc(50% - 4px); /* Landscape images can span 2 columns worth */
+  max-width: calc(50% - 4px);
+}
+
+/* Additional constraint for rows with mixed aspect ratios */
+.image-grid.mixed-row .item {
+  align-items: stretch;
+}
+
+.image-grid.mixed-row img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Fullscreen modal styles */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fullscreen-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fullscreen-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.fullscreen-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1001;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.fullscreen-nav:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.2);
+}
+
+.fullscreen-nav:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.fullscreen-nav:disabled:hover {
+  transform: translateY(-50%);
+}
+
+.fullscreen-nav.prev {
+  left: 30px;
+}
+
+.fullscreen-nav.next {
+  right: 30px;
+}
+
+.fullscreen-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1001;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.fullscreen-close:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 /* A11y helper for hidden labels */
