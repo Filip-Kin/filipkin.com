@@ -190,45 +190,45 @@ function insertLocalizedHeadings(postEl, year, month) {
  * @param {HTMLElement} postEl - The .post element containing images
  */
 function addClickHandlersToExistingImages(postEl) {
-	const imageGrids = postEl.querySelectorAll('.image-grid');
-	
-	imageGrids.forEach(grid => {
+	const imageGrids = postEl.querySelectorAll(".image-grid");
+
+	imageGrids.forEach((grid) => {
 		// Handle both .item img and direct > img children
-		const existingImages = grid.querySelectorAll('img');
-		
+		const existingImages = grid.querySelectorAll("img");
+
 		// Set data-count for dynamic styling
-		grid.setAttribute('data-count', existingImages.length);
-		
+		grid.setAttribute("data-count", existingImages.length);
+
 		// Normalize structure: wrap direct img children in .item divs
-		const directImages = grid.querySelectorAll(':scope > img');
-		directImages.forEach(img => {
-			const item = document.createElement('div');
-			item.className = 'item';
+		const directImages = grid.querySelectorAll(":scope > img");
+		directImages.forEach((img) => {
+			const item = document.createElement("div");
+			item.className = "item";
 			img.parentNode.insertBefore(item, img);
 			item.appendChild(img);
 		});
-		
+
 		// Process all images for functionality
-		existingImages.forEach(img => {
+		existingImages.forEach((img) => {
 			// Skip if already has a click handler
-			if (img.hasAttribute('data-fullscreen-enabled')) return;
-			
-			img.setAttribute('data-fullscreen-enabled', 'true');
-			img.style.cursor = 'pointer';
-			
+			if (img.hasAttribute("data-fullscreen-enabled")) return;
+
+			img.setAttribute("data-fullscreen-enabled", "true");
+			img.style.cursor = "pointer";
+
 			// Add hover effect classes if not already present
 			const item = img.parentElement;
-			if (item && item.classList.contains('item')) {
-				item.style.transition = 'transform 0.2s ease, filter 0.2s ease';
+			if (item && item.classList.contains("item")) {
+				item.style.transition = "transform 0.2s ease, filter 0.2s ease";
 			}
-			
-			img.addEventListener('click', () => {
-				const allImages = Array.from(document.querySelectorAll('.image-grid img'));
+
+			img.addEventListener("click", () => {
+				const allImages = Array.from(document.querySelectorAll(".image-grid img"));
 				const clickedIndex = allImages.indexOf(img);
 				openFullscreen(clickedIndex);
 			});
 		});
-		
+
 		// Apply aspect ratio-based sorting and height matching within this grid
 		if (existingImages.length > 1) {
 			sortExistingImagesByAspectRatio(grid, existingImages);
@@ -243,32 +243,31 @@ function addClickHandlersToExistingImages(postEl) {
  */
 function sortExistingImagesByAspectRatio(grid, images) {
 	// Wait for images to load before sorting
-	const imageLoadPromises = Array.from(images).map(img => {
+	const imageLoadPromises = Array.from(images).map((img) => {
 		if (img.complete) {
 			return Promise.resolve(img);
 		}
-		return new Promise(resolve => {
-			img.addEventListener('load', () => resolve(img));
-			img.addEventListener('error', () => resolve(img)); // resolve even on error
+		return new Promise((resolve) => {
+			img.addEventListener("load", () => resolve(img));
+			img.addEventListener("error", () => resolve(img)); // resolve even on error
 		});
 	});
-	
+
 	Promise.all(imageLoadPromises).then(() => {
 		// Convert to array and get aspect ratios
-		const imageData = Array.from(images).map(img => {
+		const imageData = Array.from(images).map((img) => {
 			const item = img.parentElement;
-			const aspectRatio = img.naturalWidth && img.naturalHeight ? 
-				img.naturalWidth / img.naturalHeight : 1;
+			const aspectRatio = img.naturalWidth && img.naturalHeight ? img.naturalWidth / img.naturalHeight : 1;
 			const isLandscape = aspectRatio > 1.1; // Even more inclusive landscape definition
-			
+
 			return {
 				element: item,
 				aspectRatio,
 				isLandscape,
-				img
+				img,
 			};
 		});
-		
+
 		// Enhanced sorting for better mixed layouts
 		imageData.sort((a, b) => {
 			// If both are landscape or both are portrait, sort by aspect ratio
@@ -283,16 +282,16 @@ function sortExistingImagesByAspectRatio(grid, images) {
 				return b.isLandscape - a.isLandscape;
 			}
 		});
-		
+
 		// Apply landscape class appropriately
-		imageData.forEach(data => {
+		imageData.forEach((data) => {
 			if (data.isLandscape) {
-				data.element.classList.add('landscape');
+				data.element.classList.add("landscape");
 			} else {
-				data.element.classList.remove('landscape');
+				data.element.classList.remove("landscape");
 			}
 		});
-		
+
 		// Implement height matching for mixed aspect ratio rows
 		implementHeightMatching(grid, imageData);
 	});
@@ -305,75 +304,75 @@ function sortExistingImagesByAspectRatio(grid, images) {
  */
 function implementHeightMatching(grid, imageData) {
 	// Check if we should apply special layout
-	const aspectRatios = imageData.map(data => data.aspectRatio);
+	const aspectRatios = imageData.map((data) => data.aspectRatio);
 	const minRatio = Math.min(...aspectRatios);
 	const maxRatio = Math.max(...aspectRatios);
-	const hasVariedAspectRatios = (maxRatio / minRatio) > 1.3; // Any significant variation in aspect ratios
-	
+	const hasVariedAspectRatios = maxRatio / minRatio > 1.3; // Any significant variation in aspect ratios
+
 	// Apply special layout for grids with varied aspect ratios
 	if (hasVariedAspectRatios && imageData.length <= 6) {
-		grid.classList.add('mixed-row');
-		
+		grid.classList.add("mixed-row");
+
 		// Force row wrapping for 4+ images to prevent overcrowding
 		if (imageData.length >= 4) {
 			// Strategy: Put the most extreme aspect ratio image in its own row,
 			// then group the rest
 			const sortedByRatio = [...imageData].sort((a, b) => b.aspectRatio - a.aspectRatio);
 			const mostExtreme = sortedByRatio[0];
-			const remaining = imageData.filter(data => data !== mostExtreme);
-			
+			const remaining = imageData.filter((data) => data !== mostExtreme);
+
 			// Calculate dimensions for the extreme image (full width row)
 			const gridWidth = grid.offsetWidth;
 			const extremeHeight = gridWidth / mostExtreme.aspectRatio;
 			const maxExtremeHeight = window.innerHeight * 0.35;
 			const finalExtremeHeight = Math.min(extremeHeight, maxExtremeHeight);
 			const finalExtremeWidth = finalExtremeHeight * mostExtreme.aspectRatio;
-			
+
 			// Apply layout for the extreme image (centered, not full width)
 			const extremeWidthPercentage = (finalExtremeWidth / gridWidth) * 100;
 			mostExtreme.element.style.flex = `0 0 ${extremeWidthPercentage}%`;
 			mostExtreme.element.style.height = `${finalExtremeHeight}px`;
 			mostExtreme.element.style.width = `${extremeWidthPercentage}%`;
-			mostExtreme.element.style.display = 'flex';
-			mostExtreme.element.style.justifyContent = 'center';
-			mostExtreme.element.style.alignItems = 'center';
+			mostExtreme.element.style.display = "flex";
+			mostExtreme.element.style.justifyContent = "center";
+			mostExtreme.element.style.alignItems = "center";
 			mostExtreme.img.style.height = `${finalExtremeHeight}px`;
 			mostExtreme.img.style.width = `${finalExtremeWidth}px`;
-			mostExtreme.img.style.objectFit = 'cover';
-			mostExtreme.img.style.objectPosition = 'center';
-			
+			mostExtreme.img.style.objectFit = "cover";
+			mostExtreme.img.style.objectPosition = "center";
+
 			// Calculate dimensions for remaining images (shared row)
 			if (remaining.length > 0) {
 				const totalRemainingRatio = remaining.reduce((sum, data) => sum + data.aspectRatio, 0);
 				const gap = 4;
 				const totalGapWidth = gap * (remaining.length - 1);
 				const availableWidth = gridWidth - totalGapWidth;
-				
+
 				// Calculate height that makes all remaining images fit exactly in available width
 				const sharedRowHeight = availableWidth / totalRemainingRatio;
 				const maxSharedRowHeight = window.innerHeight * 0.25;
 				const finalSharedRowHeight = Math.min(sharedRowHeight, maxSharedRowHeight);
-				
-				remaining.forEach(data => {
+
+				remaining.forEach((data) => {
 					// Calculate exact width for this aspect ratio at the shared height
 					const exactWidth = data.aspectRatio * finalSharedRowHeight;
 					const widthPercentage = (exactWidth / gridWidth) * 100;
-					
+
 					data.element.style.flex = `0 0 ${widthPercentage}%`;
 					data.element.style.height = `${finalSharedRowHeight}px`;
 					data.element.style.width = `${widthPercentage}%`;
-					data.element.style.display = 'flex';
-					data.element.style.justifyContent = 'center';
-					data.element.style.alignItems = 'center';
+					data.element.style.display = "flex";
+					data.element.style.justifyContent = "center";
+					data.element.style.alignItems = "center";
 					data.img.style.height = `${finalSharedRowHeight}px`;
 					data.img.style.width = `${exactWidth}px`;
-					data.img.style.objectFit = 'cover';
-					data.img.style.objectPosition = 'center';
+					data.img.style.objectFit = "cover";
+					data.img.style.objectPosition = "center";
 				});
-				
+
 				// Reorder DOM: full-width image first, then remaining images
 				grid.appendChild(mostExtreme.element);
-				remaining.forEach(data => {
+				remaining.forEach((data) => {
 					grid.appendChild(data.element);
 				});
 			}
@@ -384,54 +383,54 @@ function implementHeightMatching(grid, imageData) {
 			const gap = 4;
 			const totalGapWidth = gap * (imageData.length - 1);
 			const availableWidth = gridWidth - totalGapWidth;
-			
+
 			// Calculate height that makes all images fit exactly in available width
 			const targetHeight = availableWidth / totalAspectRatio;
 			const maxHeight = window.innerHeight * (imageData.length <= 2 ? 0.65 : 0.5);
 			const finalHeight = Math.min(targetHeight, maxHeight);
-			
-			imageData.forEach(data => {
+
+			imageData.forEach((data) => {
 				// Calculate exact width for this aspect ratio at the target height
 				const exactWidth = data.aspectRatio * finalHeight;
 				const widthPercentage = (exactWidth / gridWidth) * 100;
-				
+
 				data.element.style.flex = `0 0 ${widthPercentage}%`;
 				data.element.style.height = `${finalHeight}px`;
 				data.element.style.width = `${widthPercentage}%`;
-				data.element.style.display = 'flex';
-				data.element.style.justifyContent = 'center';
-				data.element.style.alignItems = 'center';
+				data.element.style.display = "flex";
+				data.element.style.justifyContent = "center";
+				data.element.style.alignItems = "center";
 				data.img.style.height = `${finalHeight}px`;
 				data.img.style.width = `${exactWidth}px`;
-				data.img.style.objectFit = 'cover';
-				data.img.style.objectPosition = 'center';
+				data.img.style.objectFit = "cover";
+				data.img.style.objectPosition = "center";
 			});
-			
+
 			// Reorder DOM elements for 2-3 image layouts
-			imageData.forEach(data => {
+			imageData.forEach((data) => {
 				grid.appendChild(data.element);
 			});
 		}
 	} else {
 		// For uniform aspect ratios or larger grids, use standard layout with proper sizing
-		imageData.forEach(data => {
+		imageData.forEach((data) => {
 			// Reset any previous custom styling
-			data.element.style.flex = '';
-			data.element.style.height = '';
-			data.element.style.width = '';
-			data.element.style.display = '';
-			data.element.style.justifyContent = '';
-			data.element.style.alignItems = '';
-			
+			data.element.style.flex = "";
+			data.element.style.height = "";
+			data.element.style.width = "";
+			data.element.style.display = "";
+			data.element.style.justifyContent = "";
+			data.element.style.alignItems = "";
+
 			// Ensure images fill their containers
-			data.img.style.height = '100%';
-			data.img.style.width = '100%';
-			data.img.style.objectFit = 'cover';
-			data.img.style.objectPosition = 'center';
+			data.img.style.height = "100%";
+			data.img.style.width = "100%";
+			data.img.style.objectFit = "cover";
+			data.img.style.objectPosition = "center";
 		});
-		
+
 		// Reorder DOM elements for non-mixed-row layouts
-		imageData.forEach(data => {
+		imageData.forEach((data) => {
 			grid.appendChild(data.element);
 		});
 	}
@@ -446,37 +445,35 @@ function implementHeightMatching(grid, imageData) {
  */
 function processImageGrids(postEl, images, base) {
 	const imageGrids = postEl.querySelectorAll(".image-grid");
-	
+
 	if (imageGrids.length === 0) return;
-	
+
 	// Calculate aspect ratios for all images
 	const imagesWithAspectRatio = images.map((img, originalIndex) => ({
 		...img,
 		aspectRatio: img.width / img.height,
-		isLandscape: (img.width / img.height) > 1.1, // More inclusive landscape definition
-		originalIndex
+		isLandscape: img.width / img.height > 1.1, // More inclusive landscape definition
+		originalIndex,
 	}));
-	
+
 	// Only process grids that are empty (no existing images)
-	const emptyGrids = Array.from(imageGrids).filter(grid => 
-		grid.querySelectorAll('img').length === 0
-	);
-	
+	const emptyGrids = Array.from(imageGrids).filter((grid) => grid.querySelectorAll("img").length === 0);
+
 	if (emptyGrids.length === 0) return;
-	
+
 	// Distribute images across empty grids
 	const imagesPerGrid = Math.ceil(imagesWithAspectRatio.length / emptyGrids.length);
-	
+
 	emptyGrids.forEach((grid, gridIndex) => {
 		const startIndex = gridIndex * imagesPerGrid;
 		const endIndex = Math.min(startIndex + imagesPerGrid, imagesWithAspectRatio.length);
-		
+
 		// Get images for this specific grid
 		const gridImages = imagesWithAspectRatio.slice(startIndex, endIndex);
-		
+
 		// Set data-count for dynamic styling
-		grid.setAttribute('data-count', gridImages.length);
-		
+		grid.setAttribute("data-count", gridImages.length);
+
 		// Sort images within this grid by aspect ratio with improved logic
 		gridImages.sort((a, b) => {
 			// If both are landscape or both are portrait, sort by aspect ratio
@@ -491,9 +488,9 @@ function processImageGrids(postEl, images, base) {
 				return b.isLandscape - a.isLandscape;
 			}
 		});
-		
+
 		// Add images to this grid
-		gridImages.forEach(imageData => {
+		gridImages.forEach((imageData) => {
 			const item = createImageItem(imageData, base);
 			grid.appendChild(item);
 		});
@@ -507,21 +504,21 @@ function processImageGrids(postEl, images, base) {
  * @returns {HTMLElement} The image item element
  */
 function createImageItem(imageData, base) {
-	const item = document.createElement('div');
-	item.className = `item ${imageData.isLandscape ? 'landscape' : ''}`;
-	
-	const img = document.createElement('img');
+	const item = document.createElement("div");
+	item.className = `item ${imageData.isLandscape ? "landscape" : ""}`;
+
+	const img = document.createElement("img");
 	img.src = imageData.url || `${base}/${imageData.name}`;
 	img.alt = imageData.alt || imageData.name;
-	img.loading = 'lazy';
-	
+	img.loading = "lazy";
+
 	// Add click handler for fullscreen
-	img.addEventListener('click', () => {
-		const allImages = Array.from(document.querySelectorAll('.image-grid img'));
+	img.addEventListener("click", () => {
+		const allImages = Array.from(document.querySelectorAll(".image-grid img"));
 		const clickedIndex = allImages.indexOf(img);
 		openFullscreen(clickedIndex);
 	});
-	
+
 	item.appendChild(img);
 	return item;
 }
@@ -543,7 +540,7 @@ async function loadDataAndInjectBars(base, postEl) {
 		const data = await res.json();
 		injectBar(postEl, "Activities", data.activities);
 		injectBar(postEl, "Mood", data.mood);
-		
+
 		// Process images if they exist
 		if (data.images && data.images.length > 0) {
 			processImageGrids(postEl, data.images, base);
@@ -591,7 +588,7 @@ function injectBar(postEl, title, entries) {
 let fullscreenState = {
 	isOpen: false,
 	currentIndex: 0,
-	images: []
+	images: [],
 };
 
 /**
@@ -600,39 +597,39 @@ let fullscreenState = {
  */
 function openFullscreen(index) {
 	// Collect all images from all posts for navigation
-	const allImages = Array.from(document.querySelectorAll('.image-grid img'));
+	const allImages = Array.from(document.querySelectorAll(".image-grid img"));
 	fullscreenState.images = allImages;
 	fullscreenState.currentIndex = index;
 	fullscreenState.isOpen = true;
-	
+
 	createFullscreenModal();
 	showImageAtIndex(fullscreenState.currentIndex);
-	
+
 	// Add keyboard listener when opening
-	document.addEventListener('keydown', handleKeyDown);
+	document.addEventListener("keydown", handleKeyDown);
 }
 
 /**
  * Creates the fullscreen modal if it doesn't exist
  */
 function createFullscreenModal() {
-	if (document.getElementById('fullscreen-modal')) return;
-	
-	const modal = document.createElement('div');
-	modal.id = 'fullscreen-modal';
-	modal.className = 'fullscreen-modal';
-	
+	if (document.getElementById("fullscreen-modal")) return;
+
+	const modal = document.createElement("div");
+	modal.id = "fullscreen-modal";
+	modal.className = "fullscreen-modal";
+
 	modal.innerHTML = `
 		<button class="fullscreen-close" onclick="closeFullscreen()">&times;</button>
 		<button class="fullscreen-nav prev" onclick="previousImage()">❮</button>
 		<button class="fullscreen-nav next" onclick="nextImage()">❯</button>
 		<img id="fullscreen-image" src="" alt="">
 	`;
-	
+
 	document.body.appendChild(modal);
-	
+
 	// Close on background click
-	modal.addEventListener('click', (e) => {
+	modal.addEventListener("click", (e) => {
 		if (e.target === modal) {
 			closeFullscreen();
 		}
@@ -644,22 +641,22 @@ function createFullscreenModal() {
  * @param {number} index - Index of the image to show
  */
 function showImageAtIndex(index) {
-	const modal = document.getElementById('fullscreen-modal');
-	const img = document.getElementById('fullscreen-image');
-	const prevBtn = modal.querySelector('.prev');
-	const nextBtn = modal.querySelector('.next');
-	
+	const modal = document.getElementById("fullscreen-modal");
+	const img = document.getElementById("fullscreen-image");
+	const prevBtn = modal.querySelector(".prev");
+	const nextBtn = modal.querySelector(".next");
+
 	if (index >= 0 && index < fullscreenState.images.length) {
 		const targetImg = fullscreenState.images[index];
 		img.src = targetImg.src;
 		img.alt = targetImg.alt;
-		
+
 		// Update button states
 		prevBtn.disabled = index === 0;
 		nextBtn.disabled = index === fullscreenState.images.length - 1;
-		
+
 		// Show modal
-		modal.classList.add('active');
+		modal.classList.add("active");
 	}
 }
 
@@ -667,12 +664,12 @@ function showImageAtIndex(index) {
  * Closes the fullscreen modal
  */
 function closeFullscreen() {
-	const modal = document.getElementById('fullscreen-modal');
+	const modal = document.getElementById("fullscreen-modal");
 	if (modal) {
-		modal.classList.remove('active');
+		modal.classList.remove("active");
 		fullscreenState.isOpen = false;
 		// Remove keyboard listener to prevent memory leaks
-		document.removeEventListener('keydown', handleKeyDown);
+		document.removeEventListener("keydown", handleKeyDown);
 	}
 }
 
@@ -702,15 +699,15 @@ function nextImage() {
  */
 function handleKeyDown(e) {
 	if (!fullscreenState.isOpen) return;
-	
+
 	switch (e.key) {
-		case 'Escape':
+		case "Escape":
 			closeFullscreen();
 			break;
-		case 'ArrowLeft':
+		case "ArrowLeft":
 			previousImage();
 			break;
-		case 'ArrowRight':
+		case "ArrowRight":
 			nextImage();
 			break;
 	}
