@@ -49,6 +49,8 @@ function decrementMonth() {
  * @returns {Promise<boolean>} True if loaded successfully; false otherwise.
  */
 async function loadArchive(year, month) {
+	if (year <= 2025 && month < 6) return false; // Prevent loading archives before 2025/06
+
 	const base = `${year}/${pad(month)}`;
 	const htmlPath = `${base}/index.html`;
 
