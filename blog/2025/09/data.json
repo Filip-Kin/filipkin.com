@@ -1,0 +1,252 @@
+{
+  "month": 9,
+  "year": 2025,
+  "activities": [
+    {
+      "label": "Sleep",
+      "hours": 283
+    },
+    {
+      "label": "Dating",
+      "hours": 0
+    },
+    {
+      "label": "Friends",
+      "hours": 30
+    },
+    {
+      "label": "Robots",
+      "hours": 7
+    },
+    {
+      "label": "School",
+      "hours": 0
+    },
+    {
+      "label": "Work",
+      "hours": 35
+    },
+    {
+      "label": "Productive",
+      "hours": 52
+    },
+    {
+      "label": "Hobby",
+      "hours": 20
+    },
+    {
+      "label": "Leisure",
+      "hours": 219
+    },
+    {
+      "label": "Waste",
+      "hours": 33
+    },
+    {
+      "label": "Transition",
+      "hours": 46
+    }
+  ],
+  "mood": [
+    {
+      "label": "Bad",
+      "hours": 2
+    },
+    {
+      "label": "Poor",
+      "hours": 21
+    },
+    {
+      "label": "Ok",
+      "hours": 73
+    },
+    {
+      "label": "Neutral",
+      "hours": 240
+    },
+    {
+      "label": "Good",
+      "hours": 90
+    },
+    {
+      "label": "Great",
+      "hours": 13
+    }
+  ],
+  "images": [
+    {
+      "name": "image25.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image25.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image15.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image15.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image28.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image28.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image5.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image5.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image6.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image6.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image17.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image17.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image12.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image12.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image21.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image21.webp",
+      "width": 675,
+      "height": 1200
+    },
+    {
+      "name": "image3.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image3.webp",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "name": "image2.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image2.webp",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "name": "image14.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image14.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image19.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image19.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image1.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image1.webp",
+      "width": 1200,
+      "height": 675
+    },
+    {
+      "name": "image29.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image29.webp",
+      "width": 1200,
+      "height": 804
+    },
+    {
+      "name": "image4.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image4.webp",
+      "width": 675,
+      "height": 1200
+    },
+    {
+      "name": "image8.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image8.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image20.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image20.webp",
+      "width": 1200,
+      "height": 1001
+    },
+    {
+      "name": "image7.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image7.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image26.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image26.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image10.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image10.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image13.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image13.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image18.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image18.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image9.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image9.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image23.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image23.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image22.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image22.webp",
+      "width": 903,
+      "height": 1200
+    },
+    {
+      "name": "image24.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image24.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image11.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image11.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image27.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image27.webp",
+      "width": 1200,
+      "height": 903
+    },
+    {
+      "name": "image16.webp",
+      "url": "https://storage.googleapis.com/filipkin-blog-images/09/image16.webp",
+      "width": 1200,
+      "height": 903
+    }
+  ]
+}
