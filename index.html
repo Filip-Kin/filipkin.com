@@ -13,21 +13,21 @@
 		<!-- Primary Meta Tags -->
 		<title>Filip Kin</title>
 		<meta name="title" content="Filip Kin" />
-		<meta name="description" content="Senior Software Developer" />
+		<meta name="description" content="Founding Engineer at Skuno" />
 		<link rel="canonical" href="https://filipkin.com/" />
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://filipkin.com/" />
 		<meta property="og:title" content="Filip Kin" />
-		<meta property="og:description" content="Senior Software Developer" />
+		<meta property="og:description" content="Founding Engineer at Skuno" />
 		<meta property="og:image" content="./img/banner.png" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://filipkin.com/" />
 		<meta property="twitter:title" content="Filip Kin" />
-		<meta property="twitter:description" content="Senior Software Developer" />
+		<meta property="twitter:description" content="Founding Engineer at Skuno" />
 		<meta property="twitter:image" content="./img/banner.png" />
 
 		<script type="application/ld+json">
@@ -42,7 +42,11 @@
 					"https://www.linkedin.com/in/filip-kin/",
 					"https://twitter.com/filipkin69"
 				],
-				"jobTitle": "Senior Software Developer",
+				"jobTitle": "Founding Engineer",
+				"worksFor": {
+					"@type": "Organization",
+					"name": "Skuno"
+				},
 				"image": "https://filipkin.com/img/profile/512.webp"
 			}
 		</script>
@@ -89,7 +93,7 @@
 		<div class="container">
 			<div id="home">
 				<h1>Filip Kin</h1>
-				<h2>Software/Industrial Engineer.</h2>
+				<h2>Software/Robotics Engineer.</h2>
 
 				<h4>Skills</h4>
 				<div style="display: flex">
@@ -110,57 +114,119 @@
 				<h3>Career</h3>
 				<div class="divider"></div>
 				<p>
-					I am studying industrial engineering at Oakland University. <br />
+					I am studying robotics engineering at Oakland University, and I'm a founding engineer at Skuno. <br />
 					I also happen to be good at programming.
 				</p>
 			</div>
 			<div>
-				<h3>Volunteering</h3>
+				<h3>FIRST Robotics</h3>
 				<div class="divider"></div>
 				<p>
-					I am a volunteer for FIRST in Michigan, which is an organization that offers robotics programs to elementary through highschool students. I
-					help run competitions by setting up the field and troubleshooting problems with the robots or the field.
+					I volunteer for FIRST in Michigan, an organization that runs robotics programs for elementary through high school students. At competitions I
+					help set up and troubleshoot the field, and over the years I've built a suite of software that events actually run on.
 				</p>
-				<p>I've also written some software for use at events.</p>
 
 				<div class="flex-container">
+					<div class="item">
+						<h4>FTA Buddy</h4>
+						<a href="https://ftabuddy.com">Live</a>
+						<a href="https://github.com/Filip-Kin/FTA-Buddy">GitHub</a>
+						<p class="nice">
+							A mobile-friendly field monitor for FRC that's grown into a full toolkit for the people running an event. It tracks how long each
+							robot has been disconnected, surfaces the right troubleshooting steps, and pulls match logs so they can be shared with a team in
+							seconds. A checklist feature syncs across everyone's devices, so tracking which teams have had their radio programmed or passed
+							inspection stays in one place. It's deployed behind a load balancer and used at real competitions.
+						</p>
+					</div>
+
+					<div class="item">
+						<h4>Audience Display</h4>
+						<a href="https://github.com/Filip-Kin/audience-display">GitHub</a>
+						<p class="nice">
+							The graphics package that goes up on the big screen at an event: match timers, rankings, brackets, sponsor reels, and victory
+							sequences, all driven live off the field management system. It's built as swappable themes, so each competition gets its own look
+							without forking the code. Used to run the audience display at multiple off-season events.
+						</p>
+					</div>
+
+					<div class="item">
+						<h4>Fake FMS</h4>
+						<a href="https://github.com/Filip-Kin/fake-fms">GitHub</a>
+						<p class="nice">
+							A drop-in emulator of the FRC Field Management System, written in Bun. It emits the same signals a real field does, so field-monitor
+							and audience-display software can be built and tested without a five-figure field control cabinet or an actual event. A control panel
+							lets you script match states and edge cases on demand.
+						</p>
+					</div>
+
+					<div class="item">
+						<h4>The Tool Pit</h4>
+						<a href="https://ttp.filipkin.com">Tool Pit</a>
+						<a href="https://photos.ttp.filipkin.com">Photo Pit</a>
+						<a href="https://fields.filipkin.com">Field Map</a>
+						<a href="https://github.com/Filip-Kin/The-Tool-Pit">GitHub</a>
+						<p class="nice">
+							The FRC community builds a lot of scattered one-off tools, so I built a home for them. The
+							<a href="https://ttp.filipkin.com">Tool Pit</a> crawls and collects them into a single searchable directory. The
+							<a href="https://photos.ttp.filipkin.com">Photo Pit</a> aggregates event photo albums from across the internet into one gallery per
+							competition. And the <a href="https://fields.filipkin.com">Field Map</a> is an interactive map of practice fields teams can use in
+							the off-season.
+						</p>
+					</div>
+
 					<div class="item">
 						<h4>Live Captions</h4>
 						<a href="https://github.com/Filip-Kin/live-captions">GitHub</a>
 						<p class="nice">
-							This application hosts a web page with captions generated by either Google Speech-to-Text API or April-ASR from an input stream on
-							the local machine. Multiple inputs can be added and each can be set to display as a different color. Each input stream has an
-							adjustable threshold, so if you hold the microphone away from your mouth to talk but forget to mute it, you can avoid having that
-							conversation broadcast on the screen.
-						</p>
-					</div>
-
-					<div class="item">
-						<h4>FTA Buddy</h4>
-						<a href="https://github.com/Filip-Kin/FTA-Buddy">GitHub</a>
-						<p class="nice">
-							This app is a mobile friendly version of field monitor for FRC. It has also grown to include many other features. It can track how
-							long a robot has been disconnected, provide relevant troubleshooting steps, access match logs and share them with the team. It has a
-							checklist feature that's syncronized between everyone's devices, so tracking progress on teams having their radio programmed and
-							passing inspection is made easier.
-						</p>
-					</div>
-
-					<div class="item">
-						<h4>Robot Vacuum</h4>
-						<a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a>
-						<p class="nice">
-							I've been modifying a Makita DRC200 to be controlled by a Raspberry PI. The PI has a webcam connected to track April tags and follow
-							a pre-programmed path while vacuuming the field. This is more efficient than the stock control system, which often gets stuck or
-							leaves areas uncleaned.<br />
-							Oh and it's going to stream it's camera feed to YouTube. Did you expect any less?
+							Hosts a web page with live captions generated by either the Google Speech-to-Text API or April-ASR from an audio stream on the local
+							machine. Multiple inputs can be added, each shown in its own color, with an adjustable threshold per input, so if you hold the mic
+							away to talk but forget to mute it, that side conversation never lands on the screen.
 						</p>
 					</div>
 				</div>
 			</div>
 
 			<div>
-				<h3>My Other Projects</h3>
+				<h3>Software Projects</h3>
+				<div class="divider"></div>
+
+				<div class="flex-container">
+					<div class="item">
+						<h4>RightNow</h4>
+						<a href="https://github.com/Filip-Kin/RightNow">GitHub</a>
+						<p class="nice">
+							An end-to-end encrypted time tracker. You log what you're doing each hour and it builds a private, searchable picture of where your
+							time actually goes. Bun and tRPC on the backend with an Expo mobile app; everything is encrypted client-side, so the server never
+							sees your plaintext.
+						</p>
+					</div>
+
+					<div class="item">
+						<h4>Sleeper Coach</h4>
+						<a href="https://github.com/Filip-Kin/sleeper-coach">GitHub</a>
+						<p class="nice">
+							An autonomous fantasy-football coach for Sleeper leagues. It drafts on your behalf with a live draft engine, announces its own picks
+							out loud in a Discord voice channel, and trash-talks the other managers while it does it. Runs unattended from the first pick to the
+							last.
+						</p>
+					</div>
+
+					<div class="item">
+						<h4>Node-DBF</h4>
+						<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a>
+						<a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
+						<p class="nice">
+							An efficient Visual FoxPro DBF file parser written in TypeScript. It reads the binary of a DBF file and streams it out as row objects
+							with an event-based interface. Based on
+							<a href="https://github.com/abstractvector/node-dbf">abstractvector/node-dbf</a>, but adds proper float and integer number types
+							specifically for Visual FoxPro DBF files.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h3>Personal</h3>
 				<div class="divider"></div>
 
 				<div class="flex-container">
@@ -173,21 +239,19 @@
 								width="1500px"
 								height="890px" />
 							I restored a 2000 Porsche Boxster.<br />
-							It has a 2.7L flat 6 engine, 5 speed manual trasnmission, and a convertible top.<br />
-							I replaced the main engine mount, a radiator, a fender, and a few suspension components. Then, repainted the damaged body panels and
-							had the car inspected. It was a great learning experience for me, and I got a pretty cool car out of it.
+							It has a 2.7L flat 6 engine, 5 speed manual transmission, and a convertible top.<br />
+							I replaced the main engine mount, a radiator, a fender, and a few suspension components, then repainted the damaged body panels and
+							had the car inspected. It was a great learning experience, and I got a pretty cool car out of it.
 						</p>
 					</div>
 
 					<div class="item">
-						<h4>Node-DBF</h4>
-						<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a>
-						<a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
+						<h4>Robot Vacuum</h4>
+						<a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a>
 						<p class="nice">
-							An efficient Visual Foxpro DBF file parser written in TypeScript.<br />
-							Reads the binary from a DBF file and converts it to row objects with a event based interface.<br />
-							Based on <a href="https://github.com/abstractvector/node-dbf">https://github.com/abstractvector/node-dbf</a>
-							but provides float and integer type of numbers, specifically for Visual Fox Pro dbf files
+							I've been modifying a Makita DRC200 robot vacuum to be controlled by a Raspberry Pi. The Pi has a webcam that tracks AprilTags and
+							follows a pre-programmed path while vacuuming, which beats the stock control system that often gets stuck or leaves areas uncleaned.
+							Oh, and it streams its camera feed to YouTube. Did you expect any less?
 						</p>
 					</div>
 				</div>
