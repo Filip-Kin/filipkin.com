@@ -367,6 +367,10 @@ img.shot,
     border-radius: 4px;
 }
 
+img.shot.tall {
+    aspect-ratio: auto;
+}
+
 .more {
     margin-top: 2px;
 }
@@ -536,3 +540,38 @@ img.shot,
     }
 }
 /* #endregion */
+
+/* #region lightbox */
+.shot img,
+img.shot,
+.car img {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    padding: 0;
+    border: 0;
+    background: none;
+    max-width: 94vw;
+    max-height: 92vh;
+    cursor: zoom-out;
+}
+
+.lightbox::backdrop {
+    background: rgba(10, 10, 9, 0.85);
+}
+
+.lightbox img {
+    display: block;
+    max-width: 94vw;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+}
+/* #endregion */
+
+.lightbox:focus,
+.lightbox:focus-visible {
+    outline: none;
+}

@@ -312,6 +312,7 @@
 					</article>
 
 					<article>
+						<img class="shot tall" src="/img/projects/voron.webp" alt="Voron Trident 3D printer on a shelf" width="1160" height="1220" loading="lazy" />
 						<h3>Voron Trident</h3>
 						<p>A 350&nbsp;mm Voron Trident on Klipper, with a Rapido HF hot end and a Nitehawk toolboard.</p>
 					</article>
@@ -335,6 +336,25 @@
 				</dl>
 			</section>
 		</main>
+
+		<dialog class="lightbox" aria-label="Image preview"><img alt="" /></dialog>
+
+		<script>
+			(function () {
+				var dlg = document.querySelector(".lightbox");
+				var big = dlg.querySelector("img");
+				document.querySelectorAll(".shot img, img.shot, .car img").forEach(function (img) {
+					img.addEventListener("click", function () {
+						big.src = img.currentSrc || img.src;
+						big.alt = img.alt;
+						dlg.showModal();
+					});
+				});
+				dlg.addEventListener("click", function () {
+					dlg.close();
+				});
+			})();
+		</script>
 
 		<footer class="foot">Filip Kin, Troy and Auckland</footer>
 
