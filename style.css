@@ -352,11 +352,17 @@ h3 {
 
 .shot {
     order: -3;
+    display: block;
+    margin-bottom: 8px;
+}
+
+img.shot,
+.shot img {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     object-position: top;
-    margin-bottom: 8px;
     border: 1px solid var(--rule);
     border-radius: 4px;
 }
