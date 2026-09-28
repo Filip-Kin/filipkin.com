@@ -375,6 +375,10 @@ img.shot,
     border-radius: 4px;
 }
 
+img.shot.car-shot {
+    object-position: center 70%;
+}
+
 img.shot.tall {
     aspect-ratio: auto;
 }
@@ -391,18 +395,6 @@ img.shot.tall {
 /* #endregion */
 
 /* #region personal + contact */
-.car {
-    margin: 0 0 40px;
-}
-
-.car img {
-    width: 100%;
-    max-height: 480px;
-    object-fit: cover;
-    object-position: center 65%;
-    border-radius: 4px;
-}
-
 .contact .facts {
     margin: 0;
     font-size: 17px;
@@ -549,10 +541,62 @@ img.shot.tall {
 }
 /* #endregion */
 
+/* #region featured */
+.entries article.feature {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+    grid-template-rows: auto auto auto auto 1fr;
+    column-gap: 48px;
+    row-gap: 8px;
+    align-content: start;
+}
+
+.feature > .shot {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 16px;
+}
+
+.feature > img.shot,
+.feature > .shot img {
+    aspect-ratio: 16 / 9;
+    object-position: center;
+}
+
+.feature > h3 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.feature > .links {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.feature > .tags,
+.feature > .more {
+    grid-column: 1;
+    grid-row: 4;
+    align-self: start;
+}
+
+.feature > p:not(.links):not(.tags):not(.more) {
+    grid-column: 2;
+    grid-row: 2 / span 4;
+    font-size: 17px;
+}
+
+@media (max-width: 860px) {
+    .entries article.feature {
+        display: flex;
+    }
+}
+/* #endregion */
+
 /* #region lightbox */
 .shot img,
-img.shot,
-.car img {
+img.shot {
     cursor: zoom-in;
 }
 

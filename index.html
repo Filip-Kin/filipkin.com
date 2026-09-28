@@ -147,7 +147,7 @@
 					<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vREtGLEmYmEm1yvfpxPU753XNNkmIxze5bOwBD6Yj44Pla3loHHEyY-lq95zrVR2vnEXWgOYaG19acF/pubhtml"><span data-stat="events">78</span> events</a>. I've made some things to help my events run smoother, and my job easier.
 				</p>
 				<div class="entries">
-					<article>
+					<article class="feature">
 						<picture class="shot">
 							<source srcset="/img/projects/fta-buddy-dark.webp" media="(prefers-color-scheme: dark)" />
 							<img src="/img/projects/fta-buddy.webp" alt="FTA Buddy field monitor during a qualification match" width="1600" height="925" loading="lazy" />
@@ -253,11 +253,9 @@
 
 			<section class="block" id="personal">
 				<h2>Personal</h2>
-				<figure class="car">
-					<img src="/img/boxster.webp" alt="Dark blue Porsche Boxster by a lake in autumn" width="1368" height="882" loading="lazy" />
-				</figure>
 				<div class="entries">
-					<article>
+					<article class="feature">
+						<img class="shot car-shot" src="/img/boxster.webp" alt="Dark blue Porsche Boxster by a lake in autumn" width="1368" height="882" loading="lazy" />
 						<h3>2000 Porsche Boxster</h3>
 						<p>
 							A 2.7 flat six with a five-speed manual, bought with a rebuilt title and repaired in my garage. I replaced the engine mount,
@@ -352,7 +350,7 @@
 			(function () {
 				var dlg = document.querySelector(".lightbox");
 				var big = dlg.querySelector("img");
-				document.querySelectorAll(".shot img, img.shot, .car img").forEach(function (img) {
+				document.querySelectorAll(".shot img, img.shot").forEach(function (img) {
 					img.addEventListener("click", function () {
 						big.src = img.currentSrc || img.src;
 						big.alt = img.alt;
