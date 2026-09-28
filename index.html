@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="preload" as="font" href="../Oswald-Regular.woff2" type="font/woff2" />
-		<link rel="preload" as="font" href="../Roboto-Regular.woff2" type="font/woff2" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
 
-		<link rel="stylesheet" href="./style.css?v=20250906" />
+		<link rel="preload" as="font" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" type="font/woff2" crossorigin />
+		<link rel="preload" as="font" href="/fonts/ibm-plex-sans-latin-600-normal.woff2" type="font/woff2" crossorigin />
+		<link rel="preload" as="image" href="/img/headshot/filip-640.webp" />
+		<link rel="stylesheet" href="/style.css?v=20260927" />
 
-		<link rel="manifest" href="./img/favicon/site.webmanifest" />
-		<link rel="shortcut icon" href="./img/favicon/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="manifest" href="/img/favicon/site.webmanifest" />
+		<link rel="shortcut icon" href="/img/favicon/favicon.ico" />
 
-		<!-- Primary Meta Tags -->
 		<title>Filip Kin</title>
-		<meta name="title" content="Filip Kin" />
-		<meta name="description" content="Founding Engineer at Skuno" />
+		<meta name="description" content="Founding engineer at Skuno, robotics engineering at Oakland University, FIRST Robotics volunteer in Michigan." />
 		<link rel="canonical" href="https://filipkin.com/" />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content="profile" />
 		<meta property="og:url" content="https://filipkin.com/" />
 		<meta property="og:title" content="Filip Kin" />
-		<meta property="og:description" content="Founding Engineer at Skuno" />
-		<meta property="og:image" content="./img/banner.png" />
-
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://filipkin.com/" />
-		<meta property="twitter:title" content="Filip Kin" />
-		<meta property="twitter:description" content="Founding Engineer at Skuno" />
-		<meta property="twitter:image" content="./img/banner.png" />
+		<meta property="og:description" content="Founding engineer at Skuno, robotics engineering at Oakland University." />
+		<meta property="og:image" content="https://filipkin.com/img/headshot/filip-1200.jpg" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Filip Kin" />
+		<meta name="twitter:description" content="Founding engineer at Skuno, robotics engineering at Oakland University." />
+		<meta name="twitter:image" content="https://filipkin.com/img/headshot/filip-1200.jpg" />
 
 		<script type="application/ld+json">
 			{
@@ -36,253 +33,371 @@
 				"@type": "Person",
 				"name": "Filip Kin",
 				"url": "https://filipkin.com/",
-				"sameAs": [
-					"https://www.facebook.com/filipkin64",
-					"https://www.instagram.com/filip_kin",
-					"https://www.linkedin.com/in/filip-kin/",
-					"https://twitter.com/filipkin69"
-				],
+				"image": "https://filipkin.com/img/headshot/filip-1200.jpg",
 				"jobTitle": "Founding Engineer",
-				"worksFor": {
-					"@type": "Organization",
-					"name": "Skuno"
-				},
-				"image": "https://filipkin.com/img/profile/512.webp"
+				"worksFor": { "@type": "Organization", "name": "Skuno" },
+				"alumniOf": { "@type": "CollegeOrUniversity", "name": "Oakland University" },
+				"sameAs": [
+					"https://github.com/Filip-Kin",
+					"https://www.linkedin.com/in/filip-kin/",
+					"https://www.instagram.com/filip_kin"
+				]
 			}
 		</script>
 	</head>
 
 	<body>
-		<div class="mobile-nav">
-			<img src="./img/profile/512.webp" alt="Filip Kin" width="512px" height="512px" />
-		</div>
-		<ul class="mobile-nav-dropdown">
-			<li><a href="#">Home</a></li>
-			<li>
-				<div class="divider"></div>
-			</li>
-			<li><a href="https://github.com/Filip-Kin">GitHub</a></li>
-			<li><a href="https://www.linkedin.com/in/filip-kin/">LinkedIn</a></li>
-			<li><a href="./Resume.pdf">Resume</a></li>
-			<li><a href="mailto:me@filipkin.com">me@filipkin.com</a></li>
-			<li><a href="tel:1-248-946-6028">+1 (248) 946-6028</a></li>
-			<li><a href="tel:64-210-200-1051">+64 (210) 200 1051</a></li>
-		</ul>
-		<div class="nav">
-			<nav>
-				<ul>
-					<li><img src="./img/profile/512.webp" width="512px" height="512px" alt="Filip Kin" /></li>
-					<li><a href="#">Home</a></li>
-					<li><a href="/blog/">Blog</a></li>
-					<li>
-						<div class="divider"></div>
-					</li>
-					<li><a href="https://github.com/Filip-Kin">GitHub</a></li>
-					<li><a href="https://www.linkedin.com/in/filip-kin/">LinkedIn</a></li>
-					<li><a href="./Resume.pdf">Resume</a></li>
-					<li>
-						<div class="divider"></div>
-					</li>
-					<li><a href="mailto:me@filipkin.com">me@filipkin.com</a></li>
-					<li><a href="tel:1-248-946-6028">+1 248-946-6028</a></li>
-					<li><a href="tel:64-020-439-7751">+64 20-439-7751</a></li>
-				</ul>
+		<header class="bar">
+			<a class="brand" href="#top">Filip Kin</a>
+			<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+				<span></span><span></span><span></span>
+			</button>
+			<nav id="site-nav" class="site-nav">
+				<a href="#frc">FIRST Robotics</a>
+				<a href="#software">Software</a>
+				<a href="#hardware">Hardware</a>
+				<a href="#personal">Personal</a>
+				<a href="/blog/">Blog</a>
+				<a href="#contact">Contact</a>
 			</nav>
-		</div>
+			<div class="scrim" hidden></div>
+		</header>
 
-		<div class="container">
-			<div id="home">
-				<h1>Filip Kin</h1>
-				<h2>Software/Robotics Engineer.</h2>
-
-				<h4>Skills</h4>
-				<div style="display: flex">
-					<ul>
-						<li>PSpice</li>
-						<li>FPGA Programming</li>
-						<li>Solidworks</li>
-					</ul>
-					<ul>
-						<li>Typescript</li>
-						<li>Java</li>
-						<li>AL</li>
-					</ul>
+		<main id="top">
+			<section class="hero">
+				<img
+					class="headshot"
+					src="/img/headshot/filip-640.webp"
+					alt="Filip Kin"
+					width="640"
+					height="815" />
+				<div class="hero-text">
+					<h1>Filip Kin</h1>
+					<p class="lede">
+						Founding engineer at <a href="https://skuno.co.nz">Skuno</a>. Robotics engineering at Oakland University. I volunteer at
+						FIRST Robotics events in Michigan and write most of the software I use there.
+					</p>
+					<dl class="facts">
+						<div><dt>Based</dt><dd>Troy, Michigan and Auckland, New Zealand</dd></div>
+						<div><dt>Email</dt><dd><a href="mailto:me@filipkin.com">me@filipkin.com</a></dd></div>
+						<div>
+							<dt>Elsewhere</dt>
+							<dd>
+								<a href="https://github.com/Filip-Kin">GitHub</a>
+								<a href="https://www.linkedin.com/in/filip-kin/">LinkedIn</a>
+								<a href="/blog/">Blog</a>
+							</dd>
+						</div>
+					</dl>
 				</div>
-			</div>
+			</section>
 
-			<div>
-				<h3>Career</h3>
-				<div class="divider"></div>
-				<p>
-					I am studying robotics engineering at Oakland University, and I'm a founding engineer at Skuno. <br />
-					I also happen to be good at programming.
+			<section class="block" id="work">
+				<h2>Work</h2>
+				<ol class="timeline">
+					<li>
+						<span class="when">2025 to now</span>
+						<span class="what"><strong>Skuno</strong> Founding engineer</span>
+					</li>
+					<li>
+						<span class="when">Before</span>
+						<span class="what"><strong>Acumen Consulting</strong> Senior software engineer</span>
+					</li>
+					<li>
+						<span class="when">Studying</span>
+						<span class="what"><strong>Oakland University</strong> Robotics engineering</span>
+					</li>
+				</ol>
+				<p class="stack">
+					TypeScript, Bun, Svelte, React, tRPC, Postgres, SQLite, Python, Java, Docker, Linux, KiCad, STM32
 				</p>
-			</div>
-			<div>
-				<h3>FIRST Robotics</h3>
-				<div class="divider"></div>
-				<p>
-					I volunteer for FIRST in Michigan, an organization that runs robotics programs for elementary through high school students. At competitions I
-					help set up and troubleshoot the field, and over the years I've built a suite of software that events actually run on.
+			</section>
+
+			<section class="block" id="frc">
+				<h2>FIRST Robotics</h2>
+				<p class="intro">
+					I volunteer on the field technical crew at FRC events in Michigan. When something on the field breaks, it is my job to find out
+					why and fix it before the next match. These are the tools I built for that job, and for the people running the rest of the event.
 				</p>
-
-				<div class="flex-container">
-					<div class="item">
-						<h4>FTA Buddy</h4>
-						<a href="https://ftabuddy.com">Live</a>
-						<a href="https://github.com/Filip-Kin/FTA-Buddy">GitHub</a>
-						<p class="nice">
-							A mobile-friendly field monitor for FRC that's grown into a full toolkit for the people running an event. It tracks how long each
-							robot has been disconnected, surfaces the right troubleshooting steps, and pulls match logs so they can be shared with a team in
-							seconds. A checklist feature syncs across everyone's devices, so tracking which teams have had their radio programmed or passed
-							inspection stays in one place. It's deployed behind a load balancer and used at real competitions.
+				<div class="entries">
+					<article>
+						<h3>FTA Buddy</h3>
+						<p class="links"><a href="https://ftabuddy.com">ftabuddy.com</a><a href="https://github.com/FIRSTinMI/FTA-Buddy">GitHub</a></p>
+						<p>
+							The field monitor that event staff keep open on their phones. It shows how long each robot has been disconnected, pulls match
+							logs to share with a team, keeps inspection and radio checklists in sync across devices, and walks a volunteer through
+							troubleshooting trees for the radio, roboRIO, CAN and power. A support chat answers from the WPILib, REV and CTRE docs and from
+							past support threads.
 						</p>
-					</div>
+						<p class="tags">Svelte, Bun, tRPC, Postgres</p>
+					</article>
 
-					<div class="item">
-						<h4>Audience Display</h4>
-						<a href="https://github.com/Filip-Kin/audience-display">GitHub</a>
-						<p class="nice">
-							The graphics package that goes up on the big screen at an event: match timers, rankings, brackets, sponsor reels, and victory
-							sequences, all driven live off the field management system. It's built as swappable themes, so each competition gets its own look
-							without forking the code. Used to run the audience display at multiple off-season events.
+					<article>
+						<h3>FRC.Tools</h3>
+						<p class="links">
+							<a href="https://frc.tools">frc.tools</a><a href="https://github.com/Filip-Kin/The-Tool-Pit">GitHub</a>
 						</p>
-					</div>
+						<p>
+							One place for the things FRC teams keep searching for: a directory of community tools, photo albums grouped by event,
+							a map of practice fields, off-season events, grants teams can apply for, and an archive of robot code and CAD.
+						</p>
+						<p class="more">
+							<a href="https://frc.tools/photos">Photos</a><a href="https://frc.tools/fields">Fields</a><a href="https://frc.tools/grants">Grants</a><a href="https://frc.tools/events">Events</a><a href="https://frc.tools/robot-code">Robot code</a>
+						</p>
+					</article>
 
-					<div class="item">
-						<h4>Fake FMS</h4>
-						<a href="https://github.com/Filip-Kin/fake-fms">GitHub</a>
-						<p class="nice">
-							A drop-in emulator of the FRC Field Management System, written in Bun. It emits the same signals a real field does, so field-monitor
-							and audience-display software can be built and tested without a five-figure field control cabinet or an actual event. A control panel
-							lets you script match states and edge cases on demand.
+					<article>
+						<h3>Audience Display</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/audience-display">GitHub</a></p>
+						<p>
+							The graphics on the big screen: match timer, scores, rankings, brackets, sponsors and the victory sequence, all driven live
+							by the field system. Each event gets its own theme. It ran the screens at Rainbow Rumble, WRC and MARC.
 						</p>
-					</div>
+					</article>
 
-					<div class="item">
-						<h4>FRC.Tools</h4>
-						<a href="https://frc.tools">FRC.Tools</a>
-						<a href="https://frc.tools/photos">Event Photos</a>
-						<a href="https://frc.tools/fields">Field Map</a>
-						<a href="https://frc.tools/grants">Grants</a>
-						<a href="https://github.com/Filip-Kin/The-Tool-Pit">GitHub</a>
-						<p class="nice">
-							The FRC community builds a lot of scattered one-off tools, so I built a home for them.
-							<a href="https://frc.tools">FRC.Tools</a> crawls and collects them into a single searchable directory of tools,
-							calculators and apps for FRC, FTC and FLL teams. It also gathers event photo albums into one gallery per
-							competition, maps practice fields teams can use in the off-season, lists off-season events, archives team
-							robot code and CAD, and tracks grants teams can apply for.
+					<article>
+						<h3>Fake FMS</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/fake-fms">GitHub</a></p>
+						<p>
+							An emulator of the FRC Field Management System. It sends the same messages a real field does, so I can test FTA Buddy and
+							the audience display on a desk instead of at an event.
 						</p>
-					</div>
+						<p class="tags">Bun</p>
+					</article>
 
-					<div class="item">
-						<h4>Live Captions</h4>
-						<a href="https://github.com/Filip-Kin/live-captions">GitHub</a>
-						<p class="nice">
-							Hosts a web page with live captions generated by either the Google Speech-to-Text API or April-ASR from an audio stream on the local
-							machine. Multiple inputs can be added, each shown in its own color, with an adjustable threshold per input, so if you hold the mic
-							away to talk but forget to mute it, that side conversation never lands on the screen.
+					<article>
+						<h3>FIM AV Assistant</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/fimav-assistant">GitHub</a></p>
+						<p>
+							A desktop app for the FIRST in Michigan AV crews. It uploads match videos to YouTube and posts the links to The Blue
+							Alliance.
 						</p>
-					</div>
+					</article>
+
+					<article>
+						<h3>Champs Brackets</h3>
+						<p class="links">
+							<a href="https://champs.filipkin.com">champs.filipkin.com</a><a href="https://github.com/Filip-Kin/frc-champs-brackets">GitHub</a>
+						</p>
+						<p>All eight World Championship division brackets on one screen, updated live, with Einstein added once the divisions finish.</p>
+					</article>
+
+					<article>
+						<h3>Avatar Store</h3>
+						<p class="links">
+							<a href="https://avatars.frc.tools">avatars.frc.tools</a><a href="https://github.com/Filip-Kin/avatar-store">GitHub</a>
+						</p>
+						<p>Sharp team avatars for the audience display, with a separate set per event and public submissions.</p>
+					</article>
+
+					<article>
+						<h3>Live Captions</h3>
+						<p class="links"><a href="https://github.com/FIRSTinMI/live-captions">GitHub</a></p>
+						<p>
+							Live captions from the announcer microphones, one colour per mic. Each input has its own threshold, so a side conversation
+							near an unmuted mic stays off the screen.
+						</p>
+					</article>
 				</div>
-			</div>
+			</section>
 
-			<div>
-				<h3>Software Projects</h3>
-				<div class="divider"></div>
-
-				<div class="flex-container">
-					<div class="item">
-						<h4>RightNow</h4>
-						<a href="https://github.com/Filip-Kin/RightNow">GitHub</a>
-						<p class="nice">
-							An end-to-end encrypted time tracker. You log what you're doing each hour and it builds a private, searchable picture of where your
-							time actually goes. Bun and tRPC on the backend with an Expo mobile app; everything is encrypted client-side, so the server never
-							sees your plaintext.
+			<section class="block" id="software">
+				<h2>Software</h2>
+				<div class="entries">
+					<article>
+						<h3>loon</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/loon">GitHub</a></p>
+						<p>
+							An electronics design tool that reads and writes KiCad files. You describe a circuit, it places parametric modules like a
+							buck converter or an MCU core, and you can edit the result by hand at any level.
 						</p>
-					</div>
+						<p class="tags">Bun, React, KiCad</p>
+					</article>
 
-					<div class="item">
-						<h4>Sleeper Coach</h4>
-						<a href="https://github.com/Filip-Kin/sleeper-coach">GitHub</a>
-						<p class="nice">
-							An autonomous fantasy-football coach for Sleeper leagues. It drafts on your behalf with a live draft engine, announces its own picks
-							out loud in a Discord voice channel, and trash-talks the other managers while it does it. Runs unattended from the first pick to the
-							last.
+					<article>
+						<h3>claude-terminal</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/claude-terminal">GitHub</a></p>
+						<p>
+							Tabs, usage tracking and push notifications for Claude Code running in a browser terminal. I run my home server through it
+							from my phone.
 						</p>
-					</div>
+					</article>
 
-					<div class="item">
-						<h4>Node-DBF</h4>
-						<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a>
-						<a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
-						<p class="nice">
-							An efficient Visual FoxPro DBF file parser written in TypeScript. It reads the binary of a DBF file and streams it out as row objects
-							with an event-based interface. Based on
-							<a href="https://github.com/abstractvector/node-dbf">abstractvector/node-dbf</a>, but adds proper float and integer number types
-							specifically for Visual FoxPro DBF files.
+					<article>
+						<h3>ITA Matrix MCP</h3>
+						<p class="links">
+							<a href="https://github.com/Filip-Kin/ita-matrix-mcp">GitHub</a><a href="https://github.com/Filip-Kin/travel-agent-skill">Travel agent skill</a>
 						</p>
-					</div>
+						<p>
+							Airfare search through ITA Matrix for AI agents, with multi-city trips and the full routing language. The travel agent
+							skill builds on it to plan and price a whole trip.
+						</p>
+					</article>
+
+					<article>
+						<h3>Sleeper Coach</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/sleeper-coach">GitHub</a></p>
+						<p>
+							A fantasy football manager that runs my team on its own. It drafted live, sets the lineup, proposes trades and talks trash
+							in the league Discord.
+						</p>
+					</article>
+
+					<article>
+						<h3>Gridfinity Tool</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/gridfinity-tool">GitHub</a></p>
+						<p>
+							Upload an STL and get a Gridfinity bin with that part cut out of it. It also makes baseplates cut to fit a drawer and split
+							to fit the print bed.
+						</p>
+						<p class="tags">Bun, React Three Fiber, OpenSCAD</p>
+					</article>
+
+					<article>
+						<h3>mac-fixes</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/mac-fixes">GitHub</a></p>
+						<p>A menu bar app for macOS: per-device scroll direction, a Windows keyboard layout, window snapping and screen recording.</p>
+					</article>
+
+					<article>
+						<h3>RightNow</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/RightNow">GitHub</a></p>
+						<p>
+							An hourly time log with end-to-end encryption. You write down what you are doing each hour, and the server only ever
+							stores ciphertext.
+						</p>
+						<p class="tags">Bun, tRPC, Expo</p>
+					</article>
+
+					<article>
+						<h3>Node-DBF</h3>
+						<p class="links">
+							<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a><a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
+						</p>
+						<p>A streaming parser for Visual FoxPro DBF files, with the float and integer types the original package did not handle.</p>
+					</article>
 				</div>
-			</div>
+			</section>
 
-			<div>
-				<h3>Personal</h3>
-				<div class="divider"></div>
-
-				<div class="flex-container">
-					<div class="item">
-						<h4>The Car</h4>
-						<p class="nice">
-							<img
-								src="./img/cars-min.webp"
-								alt="Porsche Boxster with the wheel off, repairing the radiator mount"
-								width="1500px"
-								height="890px" />
-							I restored a 2000 Porsche Boxster.<br />
-							It has a 2.7L flat 6 engine, 5 speed manual transmission, and a convertible top.<br />
-							I replaced the main engine mount, a radiator, a fender, and a few suspension components, then repainted the damaged body panels and
-							had the car inspected. It was a great learning experience, and I got a pretty cool car out of it.
+			<section class="block" id="hardware">
+				<h2>Hardware</h2>
+				<div class="entries">
+					<article>
+						<h3>FRC Radio Kiosk</h3>
+						<p>
+							A power board for the station that programs team radios at events. Version 1 is built. Version 2 is a routed
+							4-layer board for the new radio: it detects 802.3at PoE or falls back to passive 12&nbsp;V, and a CR123A backup rides
+							through a firmware update if the USB-C supply drops.
 						</p>
-					</div>
+						<p class="tags">KiCad, STM32</p>
+					</article>
 
-					<div class="item">
-						<h4>Robot Vacuum</h4>
-						<a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a>
-						<p class="nice">
-							I've been modifying a Makita DRC200 robot vacuum to be controlled by a Raspberry Pi. The Pi has a webcam that tracks AprilTags and
-							follows a pre-programmed path while vacuuming, which beats the stock control system that often gets stuck or leaves areas uncleaned.
-							Oh, and it streams its camera feed to YouTube. Did you expect any less?
+					<article>
+						<h3>BLDC Motor Controller</h3>
+						<p>
+							A brushless motor controller on an STM32F302 for a 12&nbsp;V lead-acid bus, with hall sensors and a thermal probe. The
+							input protection is built so a burnt motor cannot also kill the replacement controller.
 						</p>
-					</div>
+					</article>
+
+					<article>
+						<h3>Robot Vacuum</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a></p>
+						<p>
+							A Makita DRC200 with a Raspberry Pi in charge. It follows AprilTags along a set path instead of the stock random walk, and
+							streams its camera to YouTube.
+						</p>
+					</article>
+
+					<article>
+						<h3>Voron Trident</h3>
+						<p>A 350&nbsp;mm Voron Trident on Klipper, with a Rapido HF hot end and a Nitehawk toolboard.</p>
+					</article>
 				</div>
-			</div>
+			</section>
 
-			<div>
-				<footer class="nice">
-					<ul>
-						<li>
-							<address><strong>Filip Kin</strong><br />Troy, Michigan &<br />Auckland, New Zealand</address>
-						</li>
-						<li class="divider"></li>
-						<li><a href="mailto:me@filipkin.com">me@filipkin.com</a></li>
-						<li><a href="tel:1-248-946-6028">+1 248-946-6028</a></li>
-						<li><a href="tel:64-020-439-7751">+64 20-439-7751</a></li>
-						<li><a href="https://www.facebook.com/filipkin64">Facebook</a></li>
-						<li><a href="https://www.instagram.com/filip_kin">Instagram</a></li>
-					</ul>
-				</footer>
-			</div>
-		</div>
+			<section class="block" id="personal">
+				<h2>Personal</h2>
+				<figure class="car">
+					<img
+						src="/img/cars-min.webp"
+						alt="Porsche Boxster on a lift with a front wheel off"
+						width="1500"
+						height="890"
+						loading="lazy" />
+				</figure>
+				<div class="entries">
+					<article>
+						<h3>2000 Porsche Boxster</h3>
+						<p>
+							A 2.7 flat six with a five-speed manual, bought with a rebuilt title and repaired in my garage. I replaced the engine mount,
+							radiator, a fender and suspension parts, and painted the damaged panels. Later, rain killed the central locking unit, and a
+							blown 7.5&nbsp;A fuse stopped it from cranking. It runs again now.
+						</p>
+					</article>
+					<article>
+						<h3>Home server</h3>
+						<p>
+							A Ryzen box with an eight-drive array that runs about seventy containers for me, my friends and a few FRC events. Almost every
+							project on this page is hosted on it.
+						</p>
+					</article>
+				</div>
+			</section>
 
-		<!-- Google Tag Manager -->
+			<section class="block contact" id="contact">
+				<h2>Contact</h2>
+				<dl class="facts">
+					<div><dt>Email</dt><dd><a href="mailto:me@filipkin.com">me@filipkin.com</a></dd></div>
+					<div><dt>US</dt><dd><a href="tel:+12489466028">+1 248 946 6028</a></dd></div>
+					<div><dt>NZ</dt><dd><a href="tel:+64204397751">+64 20 439 7751</a></dd></div>
+					<div>
+						<dt>Elsewhere</dt>
+						<dd>
+							<a href="https://github.com/Filip-Kin">GitHub</a>
+							<a href="https://www.linkedin.com/in/filip-kin/">LinkedIn</a>
+							<a href="https://www.instagram.com/filip_kin">Instagram</a>
+						</dd>
+					</div>
+				</dl>
+			</section>
+		</main>
+
+		<footer class="foot">Filip Kin, Troy and Auckland</footer>
+
+		<script>
+			(function () {
+				var btn = document.querySelector(".menu-btn");
+				var nav = document.getElementById("site-nav");
+				var scrim = document.querySelector(".scrim");
+				function set(open) {
+					btn.setAttribute("aria-expanded", String(open));
+					nav.classList.toggle("open", open);
+					scrim.hidden = !open;
+					document.body.classList.toggle("menu-open", open);
+				}
+				btn.addEventListener("click", function () {
+					set(btn.getAttribute("aria-expanded") !== "true");
+				});
+				scrim.addEventListener("click", function () {
+					set(false);
+				});
+				nav.addEventListener("click", function (e) {
+					if (e.target.tagName === "A") set(false);
+				});
+				document.addEventListener("keydown", function (e) {
+					if (e.key === "Escape") set(false);
+				});
+				window.addEventListener("hashchange", function () {
+					set(false);
+				});
+			})();
+		</script>
+
 		<script async>
 			(function (w, d, s, l, i) {
 				w[l] = w[l] || [];
-				w[l].push({
-					"gtm.start": new Date().getTime(),
-					event: "gtm.js",
-				});
+				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
 				var f = d.getElementsByTagName(s)[0],
 					j = d.createElement(s),
 					dl = l != "dataLayer" ? "&l=" + l : "";
@@ -291,6 +406,5 @@
 				f.parentNode.insertBefore(j, f);
 			})(window, document, "script", "dataLayer", "G-BJLBM8Y9HN");
 		</script>
-		<!-- End Google Tag Manager -->
 	</body>
 </html>
