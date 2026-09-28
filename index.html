@@ -344,6 +344,43 @@
 			</section>
 		</main>
 
+		<script>
+			// Two independent columns on wide screens: each card goes into the shorter column,
+			// featured cards span both. Narrow screens keep the source order in one column.
+			(function () {
+				var wide = window.matchMedia("(min-width: 861px)");
+				var groups = Array.prototype.map.call(document.querySelectorAll(".entries"), function (el) {
+					return { el: el, items: Array.prototype.slice.call(el.children) };
+				});
+				function layout() {
+					groups.forEach(function (g) {
+						g.el.textContent = "";
+						if (!wide.matches) {
+							g.items.forEach(function (a) { g.el.appendChild(a); });
+							return;
+						}
+						var cols = null;
+						g.items.forEach(function (a) {
+							if (a.classList.contains("feature")) {
+								g.el.appendChild(a);
+								cols = null;
+								return;
+							}
+							if (!cols) {
+								cols = [document.createElement("div"), document.createElement("div")];
+								cols.forEach(function (c) { c.className = "col"; g.el.appendChild(c); });
+							}
+							(cols[0].offsetHeight <= cols[1].offsetHeight ? cols[0] : cols[1]).appendChild(a);
+						});
+					});
+				}
+				layout();
+				wide.addEventListener("change", layout);
+				window.addEventListener("load", layout);
+				if (document.fonts) document.fonts.ready.then(layout);
+			})();
+		</script>
+
 		<dialog class="lightbox" aria-label="Image preview"><img alt="" /></dialog>
 
 		<script>
