@@ -120,8 +120,8 @@
 			<section class="block" id="frc">
 				<h2>FIRST Robotics</h2>
 				<p class="intro">
-					I volunteer on the field technical crew at FRC events in Michigan, Australia and New Zealand. When something on the field breaks, it is my job to find out
-					why and fix it before the next match. These are the tools I built for that job, and for the people running the rest of the event.
+					I've been volunteering with FIRST for <span data-stat="years">7</span> years, and in that time I've attended
+					<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vREtGLEmYmEm1yvfpxPU753XNNkmIxze5bOwBD6Yj44Pla3loHHEyY-lq95zrVR2vnEXWgOYaG19acF/pubhtml"><span data-stat="events">78</span> events</a>. I've made some things to help my events run smoother, and my job easier.
 				</p>
 				<div class="entries">
 					<article>
@@ -151,39 +151,30 @@
 					</article>
 
 					<article>
-						<h3>Audience Display</h3>
+						<h3>Live Captions</h3>
+						<p class="links"><a href="https://github.com/FIRSTinMI/live-captions">GitHub</a></p>
+						<p>
+							Live captions from the announcer microphones, one colour per mic. Each input has its own threshold, so a side conversation
+							near an unmuted mic stays off the screen.
+						</p>
+					</article>
+
+					<article>
+						<h3>FRC Field Improvements</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/FRC-Field-Improvements">GitHub</a></p>
+						<p>
+							3D-printed fixes for the field itself: a holder for the field's Ethernet dongles, and a nut retainer for the gate handle.
+						</p>
+						<p class="tags">SolidWorks</p>
+					</article>
+
+					<article>
+						<h3>Custom Audience Display</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/audience-display">GitHub</a></p>
 						<p>
 							The graphics on the big screen: match timer, scores, rankings, brackets, sponsors and the victory sequence, all driven live
 							by the field system. Each event gets its own theme. It ran the screens at Rainbow Rumble, WRC and MARC.
 						</p>
-					</article>
-
-					<article>
-						<h3>Fake FMS</h3>
-						<p class="links"><a href="https://github.com/Filip-Kin/fake-fms">GitHub</a></p>
-						<p>
-							An emulator of the FRC Field Management System. It sends the same messages a real field does, so I can test FTA Buddy and
-							the audience display on a desk instead of at an event.
-						</p>
-						<p class="tags">Bun</p>
-					</article>
-
-					<article>
-						<h3>FIM AV Assistant</h3>
-						<p class="links"><a href="https://github.com/Filip-Kin/fimav-assistant">GitHub</a></p>
-						<p>
-							A desktop app for the FIRST in Michigan AV crews. It uploads match videos to YouTube and posts the links to The Blue
-							Alliance.
-						</p>
-					</article>
-
-					<article>
-						<h3>Champs Brackets</h3>
-						<p class="links">
-							<a href="https://champs.filipkin.com">champs.filipkin.com</a><a href="https://github.com/Filip-Kin/frc-champs-brackets">GitHub</a>
-						</p>
-						<p>All eight World Championship division brackets on one screen, updated live, with Einstein added once the divisions finish.</p>
 					</article>
 
 					<article>
@@ -195,11 +186,11 @@
 					</article>
 
 					<article>
-						<h3>Live Captions</h3>
-						<p class="links"><a href="https://github.com/FIRSTinMI/live-captions">GitHub</a></p>
+						<h3>The Pit Podcast</h3>
+						<p class="links"><a href="https://pitpodcast.com">YouTube</a></p>
 						<p>
-							Live captions from the announcer microphones, one colour per mic. Each input has its own threshold, so a side conversation
-							near an unmuted mic stays off the screen.
+							An FRC podcast that also streams off-season events. I built the pipeline that takes each episode from the edit to YouTube
+							and Spotify, and the broadcast graphics for events like MARC.
 						</p>
 					</article>
 				</div>
@@ -395,6 +386,42 @@
 				window.addEventListener("hashchange", function () {
 					set(false);
 				});
+			})();
+		</script>
+
+		<script>
+			// Volunteer stats from the published "FIRST events" sheet (Events tab). The numbers in the HTML are the fallback.
+			(function () {
+				var url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vREtGLEmYmEm1yvfpxPU753XNNkmIxze5bOwBD6Yj44Pla3loHHEyY-lq95zrVR2vnEXWgOYaG19acF/pub?gid=0&single=true&output=csv";
+				function parse(text) {
+					var rows = [], row = [], cell = "", q = false;
+					for (var i = 0; i < text.length; i++) {
+						var c = text[i];
+						if (q) {
+							if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+							else if (c === '"') q = false;
+							else cell += c;
+						} else if (c === '"') q = true;
+						else if (c === ",") { row.push(cell); cell = ""; }
+						else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+						else if (c !== "\r") cell += c;
+					}
+					if (cell || row.length) { row.push(cell); rows.push(row); }
+					return rows;
+				}
+				fetch(url)
+					.then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+					.then(function (text) {
+						var rows = parse(text), head = rows.shift();
+						var cap = head.indexOf("Capacity"), start = head.indexOf("Start");
+						var vol = rows.filter(function (r) { return r[cap] === "Volunteer"; });
+						if (!vol.length) return;
+						var first = Math.min.apply(null, vol.map(function (r) { return +r[start].slice(-4); }));
+						var set = function (k, v) { document.querySelectorAll('[data-stat="' + k + '"]').forEach(function (el) { el.textContent = v; }); };
+						set("events", vol.length);
+						set("years", new Date().getFullYear() - first);
+					})
+					.catch(function () {});
 			})();
 		</script>
 
