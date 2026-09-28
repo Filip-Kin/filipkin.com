@@ -350,6 +350,17 @@ h3 {
     order: -2;
 }
 
+.shot {
+    order: -3;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: 8px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+}
+
 .more {
     margin-top: 2px;
 }
