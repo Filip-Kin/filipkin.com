@@ -53,9 +53,8 @@
 				<span></span><span></span><span></span>
 			</button>
 			<nav id="site-nav" class="site-nav">
-				<a href="#frc">FIRST Robotics</a>
-				<a href="#software">Software</a>
-				<a href="#hardware">Hardware</a>
+				<a href="#work">Work</a>
+				<a href="#robotics">Robotics</a>
 				<a href="#personal">Personal</a>
 				<a href="/blog/">Blog</a>
 				<a href="/Resume.pdf">Resume</a>
@@ -78,7 +77,7 @@
 						Founding engineer at <a href="https://skuno.ai">Skuno</a>. Mechatronics and Robotics Engineering student at Oakland
 						University. Avid FIRST Robotics volunteer.<br />
 						I have chronic engineer brain and come up with a solution for every minor inconvenience. They are all documented in
-						the <a href="#frc">projects</a> below.
+						the <a href="#robotics">projects</a> below.
 					</p>
 					<dl class="facts">
 						<div><dt>Based</dt><dd>Troy, Michigan and Auckland, New Zealand</dd></div>
@@ -112,6 +111,20 @@
 						<span class="what"><strong>Oakland University</strong> Mechatronics and Robotics Engineering</span>
 					</li>
 				</ol>
+				<p class="intro skuno">
+					<a href="https://skuno.ai">Skuno</a> builds warehouse and retail operations software for Microsoft Business Central.
+					I joined as a founding engineer in 2025.
+				</p>
+				<h3 class="sub">Independent</h3>
+				<div class="entries">
+					<article>
+						<h3>Node-DBF</h3>
+						<p class="links">
+							<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a><a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
+						</p>
+						<p>A streaming parser for Visual FoxPro DBF files, with the float and integer types the original package did not handle.</p>
+					</article>
+				</div>
 			</section>
 
 			<section class="block" id="skills">
@@ -125,8 +138,8 @@
 				</dl>
 			</section>
 
-			<section class="block" id="frc">
-				<h2>FIRST Robotics</h2>
+			<section class="block" id="robotics">
+				<h2>Robotics</h2>
 				<p class="intro">
 					I've been volunteering with FIRST for <span data-stat="years">7</span> years, and in that time I've attended
 					<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vREtGLEmYmEm1yvfpxPU753XNNkmIxze5bOwBD6Yj44Pla3loHHEyY-lq95zrVR2vnEXWgOYaG19acF/pubhtml"><span data-stat="events">78</span> events</a>. I've made some things to help my events run smoother, and my job easier.
@@ -201,12 +214,56 @@
 							and Spotify, and the broadcast graphics for events like MARC.
 						</p>
 					</article>
+
+					<article>
+						<h3>FRC Radio Kiosk</h3>
+						<p>
+							A power board for the station that programs team radios at events. Version 1 is built. Version 2 is a routed
+							4-layer board for the new radio: it detects 802.3at PoE or falls back to passive 12&nbsp;V, and a CR123A backup rides
+							through a firmware update if the USB-C supply drops.
+						</p>
+						<p class="tags">KiCad, STM32</p>
+					</article>
+
+					<article>
+						<h3>Robot Vacuum</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a></p>
+						<p>
+							A Makita DRC200 with a Raspberry Pi in charge. It follows AprilTags along a set path instead of the stock random walk, and
+							streams its camera to YouTube.
+						</p>
+					</article>
 				</div>
 			</section>
 
-			<section class="block" id="software">
-				<h2>Software</h2>
+			<section class="block" id="personal">
+				<h2>Personal</h2>
+				<figure class="car">
+					<img
+						src="/img/cars-min.webp"
+						alt="Porsche Boxster on a lift with a front wheel off"
+						width="1500"
+						height="890"
+						loading="lazy" />
+				</figure>
 				<div class="entries">
+					<article>
+						<h3>2000 Porsche Boxster</h3>
+						<p>
+							A 2.7 flat six with a five-speed manual, bought with a rebuilt title and repaired in my garage. I replaced the engine mount,
+							radiator, a fender and suspension parts, and painted the damaged panels. Later, rain killed the central locking unit, and a
+							blown 7.5&nbsp;A fuse stopped it from cranking. It runs again now.
+						</p>
+					</article>
+
+					<article>
+						<h3>Home server</h3>
+						<p>
+							A Ryzen box with an eight-drive array that runs about seventy containers for me, my friends and a few FRC events. Almost every
+							project on this page is hosted on it.
+						</p>
+					</article>
+
 					<article>
 						<h3>loon</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/loon">GitHub</a></p>
@@ -273,29 +330,6 @@
 					</article>
 
 					<article>
-						<h3>Node-DBF</h3>
-						<p class="links">
-							<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a><a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
-						</p>
-						<p>A streaming parser for Visual FoxPro DBF files, with the float and integer types the original package did not handle.</p>
-					</article>
-				</div>
-			</section>
-
-			<section class="block" id="hardware">
-				<h2>Hardware</h2>
-				<div class="entries">
-					<article>
-						<h3>FRC Radio Kiosk</h3>
-						<p>
-							A power board for the station that programs team radios at events. Version 1 is built. Version 2 is a routed
-							4-layer board for the new radio: it detects 802.3at PoE or falls back to passive 12&nbsp;V, and a CR123A backup rides
-							through a firmware update if the USB-C supply drops.
-						</p>
-						<p class="tags">KiCad, STM32</p>
-					</article>
-
-					<article>
 						<h3>BLDC Motor Controller</h3>
 						<p>
 							A brushless motor controller on an STM32F302 for a 12&nbsp;V lead-acid bus, with hall sensors and a thermal probe. The
@@ -304,46 +338,8 @@
 					</article>
 
 					<article>
-						<h3>Robot Vacuum</h3>
-						<p class="links"><a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a></p>
-						<p>
-							A Makita DRC200 with a Raspberry Pi in charge. It follows AprilTags along a set path instead of the stock random walk, and
-							streams its camera to YouTube.
-						</p>
-					</article>
-
-					<article>
 						<h3>Voron Trident</h3>
 						<p>A 350&nbsp;mm Voron Trident on Klipper, with a Rapido HF hot end and a Nitehawk toolboard.</p>
-					</article>
-				</div>
-			</section>
-
-			<section class="block" id="personal">
-				<h2>Personal</h2>
-				<figure class="car">
-					<img
-						src="/img/cars-min.webp"
-						alt="Porsche Boxster on a lift with a front wheel off"
-						width="1500"
-						height="890"
-						loading="lazy" />
-				</figure>
-				<div class="entries">
-					<article>
-						<h3>2000 Porsche Boxster</h3>
-						<p>
-							A 2.7 flat six with a five-speed manual, bought with a rebuilt title and repaired in my garage. I replaced the engine mount,
-							radiator, a fender and suspension parts, and painted the damaged panels. Later, rain killed the central locking unit, and a
-							blown 7.5&nbsp;A fuse stopped it from cranking. It runs again now.
-						</p>
-					</article>
-					<article>
-						<h3>Home server</h3>
-						<p>
-							A Ryzen box with an eight-drive array that runs about seventy containers for me, my friends and a few FRC events. Almost every
-							project on this page is hosted on it.
-						</p>
 					</article>
 				</div>
 			</section>
