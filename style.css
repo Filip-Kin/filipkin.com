@@ -121,6 +121,9 @@ img {
 }
 
 .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: 600;
     color: var(--ink);
     text-decoration: none;
@@ -147,6 +150,11 @@ img {
 
 .scrim {
     display: none;
+}
+.brand img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
 }
 /* #endregion */
 
