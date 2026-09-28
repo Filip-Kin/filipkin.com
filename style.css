@@ -35,7 +35,7 @@
     --ink: #17160f;
     --muted: #6a675d;
     --rule: #d9d5c9;
-    --accent: #d9480f;
+    --accent: #1f5fd1;
     --panel: #ebe8df;
     --sans: "Plex Sans", system-ui, sans-serif;
     --mono: "Plex Mono", ui-monospace, monospace;
@@ -48,7 +48,7 @@
         --ink: #ebe9e2;
         --muted: #9a968b;
         --rule: #2e2d29;
-        --accent: #ff7a3d;
+        --accent: #7aa7ff;
         --panel: #1c1c19;
     }
 }
@@ -76,15 +76,13 @@ body {
 }
 
 a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 3px;
+    color: var(--accent);
+    text-decoration: none;
 }
 
 a:hover {
-    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 h1,
@@ -124,6 +122,7 @@ img {
 
 .brand {
     font-weight: 600;
+    color: var(--ink);
     text-decoration: none;
 }
 
