@@ -124,7 +124,22 @@
 						<p class="links">
 							<a href="https://github.com/Filip-Kin/node-dbf">GitHub</a><a href="https://www.npmjs.com/package/@filip96/node-dbf">npm</a>
 						</p>
-						<p>A streaming parser for Visual FoxPro DBF files, with the float and integer types the original package did not handle.</p>
+						<p>
+							A fork of node-dbf, rewritten in TypeScript, that reads Visual FoxPro DBF files row by row. It adds the float and integer field
+							types FoxPro uses, which the upstream parser did not support.
+						</p>
+						<p class="tags">TypeScript, Node.js</p>
+					</article>
+
+					<article>
+						<img class="shot" src="/img/projects/where-have-i-been.webp" alt="Where Have I Been: browser history in a spreadsheet" width="1280" height="800" loading="lazy" />
+						<h3>Where Have I Been</h3>
+						<p class="links"><a href="https://github.com/Filip-Kin/where-have-i-been">GitHub</a></p>
+						<p>
+							A Chrome extension from 2018 that logged your browsing history to a Google Sheet, with charts of where you spent your
+							time. A small PHP and Python backend kept the sheet up to date.
+						</p>
+						<p class="tags">JavaScript, PHP, Python, Google Sheets API</p>
 					</article>
 				</div>
 			</section>
@@ -155,12 +170,13 @@
 						<h3>FTA Buddy</h3>
 						<p class="links"><a href="https://ftabuddy.com">ftabuddy.com</a><a href="https://github.com/FIRSTinMI/FTA-Buddy">GitHub</a></p>
 						<p>
-							The field monitor that event staff keep open on their phones. It shows how long each robot has been disconnected, pulls match
-							logs to share with a team, keeps inspection and radio checklists in sync across devices, and walks a volunteer through
-							troubleshooting trees for the radio, roboRIO, CAN and power. A support chat answers from the WPILib, REV and CTRE docs and from
-							past support threads.
+							A field monitor and support tool for the technical crew at FRC events: FTAs, CSAs and scorekeepers. A Chrome extension on the
+							field network reads the FMS and relays it to the cloud, so the field status is on everyone's phone instead of only the scoring
+							table. Match logs are graphed per robot and can be shared with a team, CSA tickets and notes follow a team to its next event, and
+							troubleshooting trees and a support chat built on the WPILib, REV and CTRE docs and past CSA threads help a volunteer who has not
+							seen the problem before.
 						</p>
-						<p class="tags">Svelte, Bun, tRPC, Postgres</p>
+						<p class="tags">Svelte, Bun, tRPC, Postgres, Chrome extension</p>
 					</article>
 
 					<article>
@@ -173,28 +189,32 @@
 							<a href="https://frc.tools">frc.tools</a><a href="https://github.com/Filip-Kin/The-Tool-Pit">GitHub</a>
 						</p>
 						<p>
-							One place for the things FRC teams keep searching for: a directory of community tools, photo albums grouped by event,
-							a map of practice fields, off-season events, grants teams can apply for, and an archive of robot code and CAD.
+							Software, calculators and CAD for FRC, FTC and FLL teams, plus off-season events on a map, practice fields, event photos, robot
+							code and CAD by team, and grants. A crawler finds new listings and Claude sorts them, but a person approves each one before it
+							goes public.
 						</p>
 						<p class="more">
 							<a href="https://frc.tools/photos">Photos</a><a href="https://frc.tools/fields">Fields</a><a href="https://frc.tools/grants">Grants</a><a href="https://frc.tools/events">Events</a><a href="https://frc.tools/robot-code">Robot code</a>
 						</p>
+						<p class="tags">Next.js, Bun, Postgres, Redis</p>
 					</article>
 
 					<article>
 						<h3>Live Captions</h3>
 						<p class="links"><a href="https://github.com/FIRSTinMI/live-captions">GitHub</a></p>
 						<p>
-							Live captions from the announcer microphones, one colour per mic. Each input has its own threshold, so a side conversation
-							near an unmuted mic stays off the screen.
+							Captions for the event livestream, shown as a vMix overlay. Each microphone gets its own colour and volume threshold, so an
+							unmuted mic does not caption side conversations. It pauses Google Speech-to-Text during silence to keep the cost down, and has an
+							offline engine for venues with bad internet.
 						</p>
+						<p class="tags">Bun, Google Speech-to-Text, React</p>
 					</article>
 
 					<article>
 						<h3>FRC Field Improvements</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/FRC-Field-Improvements">GitHub</a></p>
 						<p>
-							3D-printed fixes for the field itself: a holder for the field's Ethernet dongles, and a nut retainer for the gate handle.
+							3D-printed parts for the competition field: a mount for the Ethernet dongles and a nut retainer for the field gate handle.
 						</p>
 						<p class="tags">SolidWorks</p>
 					</article>
@@ -203,9 +223,11 @@
 						<h3>Custom Audience Display</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/audience-display">GitHub</a></p>
 						<p>
-							The graphics on the big screen: match timer, scores, rankings, brackets, sponsors and the victory sequence, all driven live
-							by the field system. Each event gets its own theme. It ran the screens at Rainbow Rumble, WRC and MARC.
+							The big-screen graphics at off-season events: match preview, live scores, the score reveal, rankings, alliance selection and the
+							playoff bracket. It talks to the FMS directly and follows its video switch, so the scorekeeper runs it from the normal match
+							controls. Each event gets its own theme, and it ships as a Windows app that updates itself.
 						</p>
+						<p class="tags">Svelte, Bun, SignalR, SQLite</p>
 					</article>
 
 					<article>
@@ -213,7 +235,11 @@
 						<p class="links">
 							<a href="https://avatars.frc.tools">avatars.frc.tools</a><a href="https://github.com/Filip-Kin/avatar-store">GitHub</a>
 						</p>
-						<p>Sharp team avatars for the audience display, with a separate set per event and public submissions.</p>
+						<p>
+							Sharp team avatars for the audience display, in place of the 40px ones from FMS. Teams upload their own, or a different one for a
+							single event, and each upload is approved before it goes live.
+						</p>
+						<p class="tags">Python, FastAPI</p>
 					</article>
 
 					<article>
@@ -221,9 +247,10 @@
 						<h3>The Pit Podcast</h3>
 						<p class="links"><a href="https://pitpodcast.com">YouTube</a></p>
 						<p>
-							An FRC podcast that also streams off-season events. I built the pipeline that takes each episode from the edit to YouTube
-							and Spotify, and the broadcast graphics for events like MARC.
+							Automation behind The Pit Podcast. Finished edits go from Google Drive to YouTube and Spotify after a review in Discord. It also
+							cuts shorts with WhisperX transcripts and captions, and tracks retention and click-through for every episode.
 						</p>
+						<p class="tags">Python, Bun, React, FFmpeg, WhisperX</p>
 					</article>
 
 					<article>
@@ -233,9 +260,9 @@
 						</picture>
 						<h3>FRC Radio Kiosk</h3>
 						<p>
-							A power board for the station that programs team radios at events. Version 1 is built. Version 2 is a routed
-							4-layer board for the new radio: it detects 802.3at PoE or falls back to passive 12&nbsp;V, and a CR123A backup rides
-							through a firmware update if the USB-C supply drops.
+							The power board for the station that programs team radios at events. Version 1 is built. Version 2 is a 4-layer board for the new
+							radio, designed in loon: it detects 802.3at PoE or falls back to passive 12 V, and CR123A cells keep the radio powered if the
+							USB-C supply drops during a firmware update.
 						</p>
 						<p class="tags">KiCad, STM32</p>
 					</article>
@@ -245,9 +272,10 @@
 						<h3>Robot Vacuum</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/Robot-Vacuum">GitHub</a></p>
 						<p>
-							A Makita DRC200 with a Raspberry Pi in charge. It follows AprilTags along a set path instead of the stock random walk, and
-							streams its camera to YouTube.
+							A Makita robot vacuum retrofitted with a Raspberry Pi and an Arduino. The Pi runs the drive, brush and fan motors, and I drive it
+							with a gamepad from a web driver station, the same way an FRC robot is driven.
 						</p>
+						<p class="tags">Raspberry Pi, Arduino, Svelte, tRPC</p>
 					</article>
 				</div>
 			</section>
@@ -260,8 +288,8 @@
 						<h3>2000 Porsche Boxster</h3>
 						<p>
 							A 2.7 flat six with a five-speed manual, bought with a rebuilt title and repaired in my garage. I replaced the engine mount,
-							radiator, a fender and suspension parts, and painted the damaged panels. Later, rain killed the central locking unit, and a
-							blown 7.5&nbsp;A fuse stopped it from cranking. It runs again now.
+							radiator, a fender and suspension parts, and painted the damaged panels. Later, rain killed the central locking unit, and a blown
+							7.5 A fuse stopped it from cranking. It runs again now.
 						</p>
 					</article>
 
@@ -269,43 +297,52 @@
 						<img class="shot" src="/img/projects/home-server.webp" alt="neofetch on the home server: Debian 11, Ryzen 9 5900X, 32 GB, 37 TB array" width="960" height="600" loading="lazy" />
 						<h3>Home server</h3>
 						<p>
-							A Ryzen box with an eight-drive array that runs about seventy containers for me, my friends and a few FRC events. Almost every
-							project on this page is hosted on it.
+							A Ryzen 9 box with an eight-drive array. It runs about seventy containers for me, my friends and a few FRC events, and hosts most
+							of the projects on this page.
 						</p>
+						<p class="tags">Debian, Docker</p>
 					</article>
 
 					<article>
 						<h3>loon</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/loon">GitHub</a></p>
 						<p>
-							An electronics design tool that reads and writes KiCad files. You describe a circuit, it places parametric modules like a
-							buck converter or an MCU core, and you can edit the result by hand at any level.
+							A browser-based electronics design tool that reads and writes KiCad schematics and boards. Claude places parametric modules like a
+							buck converter or an ESP32 core, KiCad runs DRC, autorouting and renders in a container, and a hardware probe lets it read and
+							drive pins on a real board.
 						</p>
-						<p class="tags">Bun, React, KiCad</p>
+						<p class="tags">Bun, React, tRPC, KiCad</p>
 					</article>
 
 					<article>
 						<h3>claude-terminal</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/claude-terminal">GitHub</a></p>
 						<p>
-							Tabs, usage tracking and push notifications for Claude Code running in a browser terminal. I run my home server through it
-							from my phone.
+							A tab bar and usage dashboard for Claude Code running in a browser terminal. It shows which sessions are working or waiting, sends
+							a push notification when one needs me, and has a chat app that picks up in the terminal. It is how I run my home server from my
+							phone.
 						</p>
+						<p class="tags">Bun, SQLite, React, Web Push</p>
 					</article>
 
 					<article>
 						<h3>Sleeper Coach</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/sleeper-coach">GitHub</a></p>
 						<p>
-							A fantasy football manager that runs my team on its own. It drafted live, sets the lineup, proposes trades and talks trash
-							in the league Discord.
+							Claude runs my team in an 8-team keeper league: the draft, weekly lineups, waivers and trades. Sleeper has no write API, so it
+							uses Sleeper's own GraphQL endpoint. During the draft it announced its picks in the Discord voice channel.
 						</p>
+						<p class="tags">Bun, Claude, GraphQL, Discord</p>
 					</article>
 
 					<article>
 						<h3>Mac-Fixes</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/mac-fixes">GitHub</a></p>
-						<p>A menu bar app for macOS: per-device scroll direction, a Windows keyboard layout, window snapping and screen recording.</p>
+						<p>
+							Windows habits on macOS in one menu bar app: window snapping, a taskbar and Start menu, Alt-Tab with previews, clipboard history,
+							a Ctrl and Cmd swap per keyboard, and screen capture to PNG, MP4 or GIF. Each fix is its own toggle.
+						</p>
+						<p class="tags">Swift, SwiftUI</p>
 					</article>
 
 					<article>
@@ -313,16 +350,18 @@
 						<h3>RightNow</h3>
 						<p class="links"><a href="https://github.com/Filip-Kin/RightNow">GitHub</a></p>
 						<p>
-							An hourly time log with end-to-end encryption. You write down what you are doing each hour, and the server only ever
-							stores ciphertext.
+							An hourly log of what I am doing and how I feel, with end-to-end encryption. The key comes from the password through Argon2id and
+							entries are sealed with XChaCha20-Poly1305, so the server only stores ciphertext. Android app with a Wear OS companion.
 						</p>
-						<p class="tags">Bun, tRPC, Expo</p>
+						<p class="tags">Expo, Bun, tRPC, Postgres, Kotlin</p>
 					</article>
 
 					<article>
 						<img class="shot tall" src="/img/projects/voron.webp" alt="Voron Trident 3D printer on a shelf" width="1160" height="1220" loading="lazy" />
 						<h3>Voron Trident</h3>
-						<p>A 350&nbsp;mm Voron Trident on Klipper, with a Rapido HF hot end and a Nitehawk toolboard.</p>
+						<p>
+							A Voron Trident 350 running Klipper, with a Rapido HF hot end and a Nitehawk toolboard.
+						</p>
 					</article>
 				</div>
 			</section>
