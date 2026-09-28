@@ -285,6 +285,19 @@ h1 {
     color: var(--muted);
     line-height: 1.8;
 }
+.skills {
+    margin: 0;
+    font-size: 16px;
+    gap: 10px;
+}
+
+.skills > div {
+    grid-template-columns: 120px 1fr;
+}
+
+.skills dd {
+    display: block;
+}
 /* #endregion */
 
 /* #region entries */
@@ -477,6 +490,11 @@ h3 {
 
     .facts > div {
         grid-template-columns: 80px 1fr;
+    }
+
+    .skills > div {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
     .timeline li {
